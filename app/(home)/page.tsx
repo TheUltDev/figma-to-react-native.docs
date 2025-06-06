@@ -35,15 +35,15 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row w-full">
             <HomeBox
               title="Installing"
-              description="Get started by installing the necessary tools and dependencies for your React Native project."
+              description="Learn how to install the plugin and get started."
               iconPath="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"
               iconBgColor="bg-orange-100"
               iconColor="text-orange-600"
               borderClasses="border-b sm:border-b-0 sm:border-r border-fd-border"
             />
             <HomeBox
-              title="Get Started"
-              description="Quick start guide to set up your first Figma to React Native workflow."
+              title="Troubleshooting"
+              description="Check if you're experiencing common issues."
               iconPath="M13 10V3L4 14h7v7l9-11h-7z"
               iconBgColor="bg-indigo-100"
               iconColor="text-indigo-600"
@@ -55,7 +55,7 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row w-full sm:border-t border-fd-border">
             <HomeBox
               title="Designing"
-              description="Learn how to create and design your components in Figma for optimal code generation."
+              description="Guides for creating components and using the design system."
               iconPath="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"
               iconBgColor="bg-blue-100"
               iconColor="text-blue-600"
@@ -63,7 +63,7 @@ export default function HomePage() {
             />
             <HomeBox
               title="Exporting"
-              description="Export your Figma designs and prepare them for React Native development."
+              description="Export your Figma designs for use in your React Native project."
               iconPath="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
               iconBgColor="bg-green-100"
               iconColor="text-green-600"
@@ -71,7 +71,7 @@ export default function HomePage() {
             />
             <HomeBox
               title="Syncing"
-              description="Use MCP for AI agents or real-time syncing to your filesystem to skip manual exports."
+              description="Use MCP for AI agents or real-time syncing to your filesystem."
               iconPath="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
               iconBgColor="bg-purple-100"
               iconColor="text-purple-600"
