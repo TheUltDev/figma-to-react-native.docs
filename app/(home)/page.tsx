@@ -113,8 +113,8 @@ export default function HomePage() {
                 iconColor={guides[1].iconColor}
               />
             </div>
-            {/* Second Row - 3 Boxes */}
-            <div className="md:col-span-2 lg:col-span-1 lg:row-span-2">
+            {/* Syncing Box - Left centered on < 1024px */}
+            <div className="md:col-start-1 md:row-start-2 lg:col-start-3 lg:col-span-1 lg:row-span-2 lg:row-start-1">
               <HomeBox
                 title={guides[4].title}
                 description={guides[4].description}
@@ -124,6 +124,7 @@ export default function HomePage() {
                 isLarge={true}
               />
             </div>
+            {/* Second Row - 2 Boxes */}
             <HomeBox
               title={guides[2].title}
               description={guides[2].description}
@@ -189,15 +190,15 @@ function HomeBox({ title, description, iconPath, iconBgColor, iconColor, isLarge
       <div className="absolute bottom-6 left-6 w-1 h-1 bg-gradient-to-r from-pink-400 to-red-500 rounded-full opacity-30 group-hover:opacity-70 transition-opacity duration-700 animate-pulse delay-300"></div>
 
       <div className="relative z-10">
-        <div className={`w-16 h-16 ${iconBgColor} rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110 ${isLarge ? 'mx-auto' : ''}`}>
+        <div className={`w-16 h-16 ${iconBgColor} rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110 ${isLarge ? 'lg:mx-auto' : ''}`}>
           <svg className={`w-8 h-8 ${iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={iconPath} />
           </svg>
         </div>
-        <h3 className={`text-xl font-bold mb-3 text-fd-foreground group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300 ${isLarge ? 'text-center text-2xl' : ''}`}>
+        <h3 className={`text-xl font-bold mb-3 text-fd-foreground group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300 ${isLarge ? 'lg:text-center lg:text-2xl' : ''}`}>
           {title}
         </h3>
-        <p className={`text-fd-muted-foreground group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-300 leading-relaxed ${isLarge ? 'text-center text-lg' : ''}`}>
+        <p className={`text-fd-muted-foreground group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-300 leading-relaxed ${isLarge ? 'lg:text-center lg:text-lg' : ''}`}>
           {description}
         </p>
       </div>
@@ -239,7 +240,7 @@ function ArticleCard({ title, description, category, categoryColor, href }: Arti
           {description}
         </p>
         <div className="mt-4 flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors duration-300">
-          Learn more
+          Read more
           <svg className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
