@@ -77,12 +77,14 @@ export default function HomePage() {
   ];
 
   return (
-    <main className="flex flex-1 flex-col justify-center text-center">
+    <main className="flex flex-1 flex-col py-20">
       <div className="container mx-auto px-4">
         {/* Guides Section */}
-        <div className="mb-12">
-          <h1 className="text-4xl font-bold mb-8 text-fd-foreground">Guides</h1>
-          <div className="flex flex-col justify-center items-center max-w-4xl mx-auto border border-fd-border rounded-lg overflow-hidden">
+        <div className="max-w-4xl mx-auto mb-20">
+          <h2 className="text-2xl font-medium text-fd-muted-foreground mb-8 text-left">
+            Guides
+          </h2>
+          <div className="flex flex-col text-center justify-center items-center max-w-4xl mx-auto border border-fd-border rounded-lg overflow-hidden">
             {/* First Row - 2 Boxes */}
             <div className="flex flex-col sm:flex-row w-full">
               <HomeBox
@@ -134,7 +136,7 @@ export default function HomePage() {
 
         {/* Articles Section */}
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-fd-foreground mb-8">
+          <h2 className="text-2xl font-medium text-fd-muted-foreground mb-8 text-left">
             Articles
           </h2>
           <div className="border border-fd-border rounded-lg overflow-hidden">
