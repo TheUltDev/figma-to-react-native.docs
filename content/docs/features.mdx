@@ -1,0 +1,54 @@
+---
+title: Features
+description: Explore the powerful features of the Figma to React Native plugin.
+---
+
+import { Card, Cards } from 'fumadocs-ui/components/card';
+
+The Figma to React Native plugin is packed with features designed to streamline your development workflow and ensure high-quality code generation.
+
+## Component Generation
+
+The core of the plugin is its ability to convert your Figma components into React Native code.
+
+- **Layer Mapping**: Figma layers like Frames, Rectangles, and Text are intelligently mapped to React Native primitives such as `<View>` and `<Text>`.
+- **Variant Support**: Figma variants are automatically handled, generating components that accept variant props, making your code clean and easy to use.
+- **Component Properties**: Figma component properties (e.g., boolean, text, instance swap) are converted into React props, creating a clear and predictable API for your components.
+- **Instance Swaps**: Instance swap properties are converted to props that expect a JSX Element, allowing for flexible and composable components.
+- **Pressable Wrappers**: Interactions like `onPress` can be configured to wrap components in a `Pressable`.
+
+## Styling
+
+The plugin generates a comprehensive styling solution powered by `react-native-unistyles`.
+
+- **StyleSheet Generation**: Styles from your Figma components are converted into a `StyleSheet`, ensuring that your designs are perfectly replicated in your app.
+- **Theme Generation**: The plugin can extract colors, fonts, and other design tokens from your Figma variables to generate a complete theme file. This allows you to maintain a consistent design system across your application.
+- **Dynamic Styles**: Styles that change based on component variants are handled efficiently, generating dynamic style functions where needed.
+
+## Storybook Integration
+
+To help you build and test your components in isolation, the plugin automatically generates Storybook stories.
+
+- **Story Generation**: For each component you export, a corresponding `.story.tsx` file is created.
+- **Props Controls**: The generated stories include controls for all your component's props, allowing you to interactively test different variations.
+- **Variant Stories**: If your component has variants, a separate story is generated for each one, making it easy to visualize and verify every state of your component.
+
+## Assets
+
+Managing assets between Figma and your codebase can be a hassle. The plugin simplifies this process.
+
+- **Vector and Raster Support**: Export both vector (SVG) and raster (PNG) assets directly from your Figma components.
+- **Automatic Export**: Assets are automatically detected, exported, and included in your project build.
+- **Optimized Naming**: Assets are given clean, camelCased names for easy reference in your code.
+- **Advanced Assets**: The plugin supports Lottie and Rive animations.
+
+## And More...
+
+<Cards>
+  <Card title="Theming" href="/docs/theming">
+    Learn how to create and customize themes.
+  </Card>
+  <Card title="Usage" href="/docs/usage">
+    See how to use the plugin in your project.
+  </Card>
+</Cards>

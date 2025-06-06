@@ -1,13 +1,36 @@
 ---
-title: Hello World
-description: Your first document
+title: Introduction
+description: Convert Figma designs into high-quality, production-ready React Native code.
 ---
 
-Welcome to the docs! You can start writing documents in `/content/docs`.
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+import { Card, Cards } from 'fumadocs-ui/components/card';
 
-## What is Next?
+**Figma to React Native** is a powerful plugin for Figma that bridges the gap between design and development. It analyzes your Figma components and generates clean, maintainable, and production-ready React Native code, allowing you to build beautiful and functional mobile applications faster than ever.
+
+## Key Features
 
 <Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
+  <Card title="Component Generation" href="/docs/features#component-generation">
+    Automatically convert Figma components, including variants and properties, into reusable React Native components.
+  </Card>
+  <Card title="Dynamic Styling" href="/docs/features#styling">
+    Leverage the power of `react-native-unistyles` to generate a complete design system from your Figma variables, including themes, colors, and typography.
+  </Card>
+  <Card title="Storybook Integration" href="/docs/features#storybook-integration">
+    Generate Storybook stories for your components out of the box, making it easy to test and document your UI.
+  </Card>
+    <Card title="Asset Handling" href="/docs/features#assets">
+    Effortlessly export and manage assets, including vectors (SVGs) and raster images.
+  </Card>
 </Cards>
+
+## How It Works
+
+The plugin inspects the structure, styles, and properties of your Figma components. It then uses a sophisticated code generation engine to translate your designs into React Native code.
+
+- **Parser**: The parser traverses your Figma components, extracting information about layers, styles, assets, and component properties.
+- **Generator**: The generator takes the parsed information and builds the corresponding React Native files, including components, stylesheets, and Storybook stories.
+- **Theming**: The plugin can extract your Figma color and text styles, as well as variables, to create a comprehensive theme file.
+
+Ready to get started? Check out the [Usage](/docs/usage) guide.
