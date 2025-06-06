@@ -37,7 +37,7 @@ export default function HomePage() {
     }
   ];
 
-  const popularArticles = [
+  const articles = [
     {
       title: "Getting Started with Component Generation",
       description: "Learn how to convert your first Figma component into production-ready React Native code with automatic variant support and clean prop APIs.",
@@ -133,7 +133,6 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-
         {/* Articles Section */}
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-medium text-fd-muted-foreground mb-8 text-left">
@@ -143,48 +142,48 @@ export default function HomePage() {
             {/* First Row - 3 Articles */}
             <div className="flex flex-col lg:flex-row">
               <ArticleCard
-                title={popularArticles[0].title}
-                description={popularArticles[0].description}
-                category={popularArticles[0].category}
-                href={popularArticles[0].href}
+                title={articles[0].title}
+                description={articles[0].description}
+                category={articles[0].category}
+                href={articles[0].href}
                 borderClasses="border-b lg:border-b-0 lg:border-r border-fd-border"
               />
               <ArticleCard
-                title={popularArticles[1].title}
-                description={popularArticles[1].description}
-                category={popularArticles[1].category}
-                href={popularArticles[1].href}
+                title={articles[1].title}
+                description={articles[1].description}
+                category={articles[1].category}
+                href={articles[1].href}
                 borderClasses="border-b lg:border-b-0 lg:border-r border-fd-border"
               />
               <ArticleCard
-                title={popularArticles[2].title}
-                description={popularArticles[2].description}
-                category={popularArticles[2].category}
-                href={popularArticles[2].href}
+                title={articles[2].title}
+                description={articles[2].description}
+                category={articles[2].category}
+                href={articles[2].href}
                 borderClasses="border-b lg:border-b-0 border-fd-border"
               />
             </div>
             {/* Second Row - 3 Articles */}
             <div className="flex flex-col lg:flex-row lg:border-t border-fd-border">
               <ArticleCard
-                title={popularArticles[3].title}
-                description={popularArticles[3].description}
-                category={popularArticles[3].category}
-                href={popularArticles[3].href}
+                title={articles[3].title}
+                description={articles[3].description}
+                category={articles[3].category}
+                href={articles[3].href}
                 borderClasses="border-b lg:border-b-0 lg:border-r border-fd-border"
               />
               <ArticleCard
-                title={popularArticles[4].title}
-                description={popularArticles[4].description}
-                category={popularArticles[4].category}
-                href={popularArticles[4].href}
+                title={articles[4].title}
+                description={articles[4].description}
+                category={articles[4].category}
+                href={articles[4].href}
                 borderClasses="border-b lg:border-b-0 lg:border-r border-fd-border"
               />
               <ArticleCard
-                title={popularArticles[5].title}
-                description={popularArticles[5].description}
-                category={popularArticles[5].category}
-                href={popularArticles[5].href}
+                title={articles[5].title}
+                description={articles[5].description}
+                category={articles[5].category}
+                href={articles[5].href}
                 borderClasses=""
               />
             </div>
