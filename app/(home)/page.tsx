@@ -41,43 +41,31 @@ export default function HomePage() {
     {
       title: "Getting Started with Component Generation",
       description: "Learn how to convert your first Figma component into production-ready React Native code with automatic variant support and clean prop APIs.",
-      category: "Getting Started",
-      categoryColor: "bg-gradient-to-r from-[#0ACF83] to-[#099D64]",
       href: "/docs/features#component-generation"
     },
     {
       title: "Building a Complete Design System",
       description: "Extract colors, fonts, and design tokens from Figma variables to create a comprehensive theme system powered by react-native-unistyles.",
-      category: "Theming",
-      categoryColor: "bg-gradient-to-r from-[#8049C7] to-[#A259FF]",
       href: "/docs/theming"
     },
     {
       title: "Advanced Icon Management with Iconify",
       description: "Import entire icon sets from Iconify and seamlessly integrate them into your Figma designs and generated React Native components.",
-      category: "Advanced",
-      categoryColor: "bg-gradient-to-r from-[#F24E1E] to-[#FF7262]",
       href: "/docs/advanced#icon-management"
     },
     {
       title: "Exporting Projects and Managing Assets",
       description: "Master the art of exporting complete projects with optimized asset handling, including SVGs, PNGs, and even Lottie animations.",
-      category: "Usage",
-      categoryColor: "bg-gradient-to-r from-[#1ABCFE] to-[#1C87B3]",
       href: "/docs/usage#building-a-project"
     },
     {
       title: "Storybook Integration Best Practices",
       description: "Automatically generate interactive Storybook stories for your components with prop controls and variant testing capabilities.",
-      category: "Development",
-      categoryColor: "bg-gradient-to-r from-[#F24E1E] to-[#FF7262]",
       href: "/docs/features#storybook-integration"
     },
     {
       title: "Pre-built EXO Components Library",
       description: "Speed up your development with ready-to-use UI components including buttons, sliders, popovers, and more from the EXO collection.",
-      category: "Components",
-      categoryColor: "bg-gradient-to-r from-[#1ABCFE] to-[#1C87B3]",
       href: "/docs/advanced#pre-built-components-exo"
     }
   ];
@@ -143,7 +131,7 @@ export default function HomePage() {
         </div>
 
         {/* Articles Section */}
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto mb-12">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent mb-4">
               Learn More
@@ -158,8 +146,6 @@ export default function HomePage() {
                 key={index}
                 title={article.title}
                 description={article.description}
-                category={article.category}
-                categoryColor={article.categoryColor}
                 href={article.href}
               />
             ))}
@@ -209,12 +195,10 @@ function HomeBox({ title, description, iconPath, iconBgColor, iconColor, isLarge
 interface ArticleCardProps {
   title: string;
   description: string;
-  category: string;
-  categoryColor: string;
   href: string;
 }
 
-function ArticleCard({ title, description, category, categoryColor, href }: ArticleCardProps) {
+function ArticleCard({ title, description, href }: ArticleCardProps) {
   return (
     <a
       href={href}
@@ -228,11 +212,6 @@ function ArticleCard({ title, description, category, categoryColor, href }: Arti
       <div className="absolute bottom-6 left-6 w-1 h-1 bg-gradient-to-r from-[#0ACF83] to-[#099D64] rounded-full opacity-30 group-hover:opacity-70 transition-opacity duration-700 animate-pulse delay-300"></div>
 
       <div className="relative z-10">
-        <div className="mb-4">
-          <span className={`inline-flex items-center px-4 py-2 rounded-full text-xs font-semibold text-white ${categoryColor} shadow-lg group-hover:shadow-xl transition-shadow duration-300`}>
-            {category}
-          </span>
-        </div>
         <h3 className="text-xl font-bold mb-3 text-fd-foreground group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300 line-clamp-2">
           {title}
         </h3>
