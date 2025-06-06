@@ -1,0 +1,59 @@
+---
+title: Advanced Topics
+description: Dive deeper into the advanced features and customization options of the plugin.
+---
+
+This section covers some of the more advanced features of the Figma to React Native plugin, including icon management, pre-built components, and internationalization.
+
+## Icon Management
+
+The plugin has a powerful icon management system that allows you to import icons from [Iconify](https://iconify.design/) and use them in your designs and generated code.
+
+### Importing Icon Sets
+
+You can import entire icon sets from Iconify. The plugin will create a new page in your Figma file named "Icons" and populate it with the icons from the selected set.
+
+1.  **Open the Plugin**: Run the Figma to React Native plugin.
+2.  **Go to the Icons Tab**: Navigate to the icon management section of the plugin.
+3.  **Select a Set**: Choose an icon set to import.
+4.  **Import**: The plugin will create the icon components in your Figma file.
+
+The imported icons are created as individual components and can be used in your designs just like any other component. When you export a component that uses an icon, the plugin will automatically handle the necessary imports.
+
+## Pre-built Components (EXO)
+
+The plugin includes a set of pre-built components, referred to as "EXO components". These are common UI elements that you can import into your project to speed up your design and development process.
+
+### Importing EXO Components
+
+You can import these components from the plugin's UI. They will be added to a "Base" page in your Figma file. These components are fully compatible with the plugin's code generation and theming systems.
+
+Some of the available EXO components include:
+
+-   Buttons
+-   Sliders
+-   Popovers
+-   Placeholders
+
+## Internationalization (i18n)
+
+The plugin has support for internationalization through `lingui`.
+
+When the "translate" option is enabled in the plugin settings, the generator will wrap text content in a `t` template literal or a `<Trans>` component. This makes your application's text content ready for translation.
+
+```tsx
+// Example with translation
+import { t } from '@lingui/macro';
+
+function MyComponent() {
+  return <Text>{t`Hello, World!`}</Text>;
+}
+```
+This is based on `writeChildren.ts` which has a `settings?.addTranslate` flag and uses `lingui`.
+The `generateBundle` function in `project.ts` also shows logic for extracting locales and translations from Figma variables.
+
+## Motion & Animations
+
+The plugin has built-in support for creating animations and interactions using `framer-motion` syntax. You can define motion props for different interaction states like `initial`, `hover`, `press`, `enter`, and `exit`.
+
+These are configured through the plugin's node attributes UI and are translated into props for a `Motion.View` or `Motion.Text` component from `react-exo/motion`. You can define transitions with types like `tween` or `spring` and configure properties like duration, delay, and easing.
