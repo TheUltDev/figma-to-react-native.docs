@@ -108,7 +108,7 @@ export default function HomePage() {
             {/* Syncing Box - Left centered on < 1024px */}
             <div className="md:col-start-1 md:row-start-2 lg:col-start-3 lg:col-span-1 lg:row-span-2 lg:row-start-1">
               <HomeBox
-                index={4}
+                index={2}
                 title={guides[4].title}
                 description={guides[4].description}
                 iconPath={guides[4].iconPath}
@@ -119,7 +119,7 @@ export default function HomePage() {
             </div>
             {/* Second Row - 2 Boxes */}
             <HomeBox
-              index={2}
+              index={3}
               title={guides[2].title}
               description={guides[2].description}
               iconPath={guides[2].iconPath}
@@ -127,7 +127,7 @@ export default function HomePage() {
               iconColor={guides[2].iconColor}
             />
             <HomeBox
-              index={3}
+              index={4}
               title={guides[3].title}
               description={guides[3].description}
               iconPath={guides[3].iconPath}
@@ -175,9 +175,9 @@ interface HomeBoxProps {
 }
 
 function HomeBox({ title, description, iconPath, iconBgColor, iconColor, isLarge = false, index }: HomeBoxProps) {
-  const electronCount = (index % 3) + 1;
-  const topElectronColors = ['bg-[#1ABCFE]', 'bg-[#8049C7]', 'bg-sky-400'].slice(0, electronCount);
-  const bottomElectronColors = ['bg-[#F24E1E]', 'bg-[#FF7262]', 'bg-rose-400'].slice(0, electronCount);
+  const electronCount = index + 1;
+  const topElectronColors = ['bg-[#1ABCFE]', 'bg-[#8049C7]', 'bg-sky-400', 'bg-sky-400', 'bg-sky-400'].slice(0, electronCount);
+  const bottomElectronColors = ['bg-[#F24E1E]', 'bg-[#FF7262]', 'bg-rose-400', 'bg-rose-400', 'bg-rose-400'].slice(0, electronCount);
 
   return (
     <div className={`group relative bg-gradient-to-br from-white to-gray-50/50 dark:from-gray-900/50 dark:to-gray-800/50 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-2xl p-8 hover:shadow-2xl hover:shadow-gray-200/20 dark:hover:shadow-gray-900/20 transition-all duration-500 cursor-pointer overflow-hidden ${isLarge ? 'h-full flex flex-col justify-center' : ''}`}>
@@ -188,12 +188,6 @@ function HomeBox({ title, description, iconPath, iconBgColor, iconColor, isLarge
         className="top-4 right-4"
         nucleusColor="bg-gradient-to-r from-[#1ABCFE] to-[#8049C7]"
         electrons={topElectronColors}
-      />
-      <FloatingAtom
-        className="bottom-4 left-4"
-        nucleusColor="bg-gradient-to-r from-[#F24E1E] to-[#FF7262]"
-        electrons={bottomElectronColors}
-        size="w-1 h-1"
       />
 
       <div className="relative z-10">
@@ -221,9 +215,9 @@ interface ArticleCardProps {
 }
 
 function ArticleCard({ title, description, href, index }: ArticleCardProps) {
-  const electronCount = (index % 3) + 1;
-  const topElectronColors = ['bg-[#1ABCFE]', 'bg-[#8049C7]', 'bg-sky-400'].slice(0, electronCount);
-  const bottomElectronColors = ['bg-[#0ACF83]', 'bg-[#099D64]', 'bg-emerald-400'].slice(0, electronCount);
+  const electronCount = index + 1;
+  const topElectronColors = ['bg-[#1ABCFE]', 'bg-[#8049C7]', 'bg-sky-400', 'bg-sky-400', 'bg-sky-400'].slice(0, electronCount);
+  const bottomElectronColors = ['bg-[#F24E1E]', 'bg-[#FF7262]', 'bg-rose-400', 'bg-rose-400', 'bg-rose-400'].slice(0, electronCount);
 
   return (
     <a
@@ -237,12 +231,6 @@ function ArticleCard({ title, description, href, index }: ArticleCardProps) {
         className="top-4 right-4"
         nucleusColor="bg-gradient-to-r from-[#1ABCFE] to-[#8049C7]"
         electrons={topElectronColors}
-      />
-      <FloatingAtom
-        className="bottom-4 left-4"
-        nucleusColor="bg-gradient-to-r from-[#0ACF83] to-[#099D64]"
-        electrons={bottomElectronColors}
-        size="w-1 h-1"
       />
 
       <div className="relative z-10">
