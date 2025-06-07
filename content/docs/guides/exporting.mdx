@@ -1,6 +1,802 @@
 ---
 title: Exporting
-description: Export your Figma designs for use in your React Native project.
+description: Complete guide to exporting your Figma designs and converting them to React Native components with best practices and optimization tips.
 ---
 
-Content coming soon.
+import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+import { Callout } from 'fumadocs-ui/components/callout';
+
+# Exporting from Figma to React Native
+
+Transform your Figma designs into production-ready React Native components with this comprehensive export guide. From basic exports to advanced workflows, we've got you covered.
+
+<Callout type="info">
+**New to exporting?** Start with the Quick Start section below to get your first components exported in minutes!
+</Callout>
+
+## 🚀 Quick Start Export
+
+<Steps>
+<Step>
+### Install the CLI Tool
+
+```bash
+# Global installation (recommended)
+npm install -g figma-to-react-native
+
+# Or use npx for one-time usage
+npx figma-to-react-native --version
+```
+</Step>
+
+<Step>
+### Get Your Figma Access Token
+
+1. Go to [Figma Settings → Personal Access Tokens](https://www.figma.com/developers/api#access-tokens)
+2. Click **"Create new token"**
+3. Give it a descriptive name like "React Native Export"
+4. Copy the generated token (keep it secure!)
+
+<Callout type="warn">
+**Security:** Never commit your Figma token to version control. Use environment variables instead.
+</Callout>
+</Step>
+
+<Step>
+### Run Your First Export
+
+```bash
+# Basic export command
+npx figma-to-react-native \
+  --token="your_figma_token_here" \
+  --file="https://www.figma.com/file/ABC123/Your-Design-File" \
+  --output="./src/components"
+```
+
+Your components will be generated in the specified output directory!
+</Step>
+</Steps>
+
+---
+
+## 📋 Export Methods
+
+<Tabs items={['CLI Export', 'Config File', 'Programmatic', 'CI/CD Pipeline']}>
+  <Tab value="CLI Export">
+    ### Command Line Interface
+
+    Perfect for quick exports and testing:
+
+    ```bash
+    # Full export with all options
+    figma-to-react-native \
+      --token="$FIGMA_TOKEN" \
+      --file="https://www.figma.com/file/ABC123/Design-File" \
+      --output="./src/components/figma" \
+      --typescript \
+      --organize-by-page \
+      --include-fonts \
+      --verbose
+    ```
+
+    ### Common CLI Options
+
+    | Flag | Description | Example |
+    |------|-------------|---------|
+    | `--token` | Your Figma access token | `--token="abc123"` |
+    | `--file` | Figma file URL | `--file="https://..."` |
+    | `--output` | Output directory | `--output="./components"` |
+    | `--typescript` | Generate TypeScript files | `--typescript` |
+    | `--organize-by-page` | Group by Figma pages | `--organize-by-page` |
+    | `--components` | Specific components only | `--components="Button,Card"` |
+  </Tab>
+
+  <Tab value="Config File">
+    ### Configuration File Setup
+
+    Create `figma-rn.config.js` for reusable configurations:
+
+    ```javascript
+    module.exports = {
+      // Authentication
+      token: process.env.FIGMA_TOKEN,
+      fileUrl: "https://www.figma.com/file/ABC123/Your-Design",
+
+      // Output settings
+      outputDir: "./src/components/figma",
+      typescript: true,
+      organizationMode: "by-page", // "flat" | "by-page" | "by-component"
+
+      // Component filtering
+      includeComponents: ["Button", "Card", "Header"],
+      excludeComponents: ["Temp*", "*Draft*"],
+
+      // Style processing
+      cssModules: true,
+      includeAssets: true,
+      optimizeImages: true,
+
+      // Custom transforms
+      componentNameTransform: (name) => {
+        return name.replace(/\s+/g, "").replace(/[^a-zA-Z0-9]/g, "");
+      },
+
+      styleTransform: (styles) => ({
+        ...styles,
+        // Custom style modifications
+        borderRadius: Math.min(styles.borderRadius || 0, 20)
+      })
+    };
+    ```
+
+    Then run with:
+    ```bash
+    figma-to-react-native --config=figma-rn.config.js
+    ```
+  </Tab>
+
+  <Tab value="Programmatic">
+    ### Programmatic Usage
+
+    Integrate exports into your build process:
+
+    ```javascript
+    const { FigmaExporter } = require('figma-to-react-native');
+
+    async function exportComponents() {
+      const exporter = new FigmaExporter({
+        token: process.env.FIGMA_TOKEN,
+        fileUrl: 'https://www.figma.com/file/...',
+        outputDir: './src/components'
+      });
+
+      try {
+        const result = await exporter.export();
+        console.log(`✅ Exported ${result.componentCount} components`);
+        console.log(`📁 Output: ${result.outputPath}`);
+      } catch (error) {
+        console.error('❌ Export failed:', error.message);
+      }
+    }
+
+    exportComponents();
+    ```
+
+    ### Advanced Programmatic Options
+
+    ```javascript
+    const exporter = new FigmaExporter({
+      token: process.env.FIGMA_TOKEN,
+      fileUrl: figmaUrl,
+
+      // Event listeners
+      onProgress: (progress) => {
+        console.log(`Progress: ${progress.percentage}%`);
+      },
+
+      onComponentExported: (component) => {
+        console.log(`✅ ${component.name} exported`);
+      },
+
+      // Custom processors
+      processors: [
+        new TypeScriptProcessor(),
+        new StyleOptimizer(),
+        new AssetProcessor()
+      ]
+    });
+    ```
+  </Tab>
+
+  <Tab value="CI/CD Pipeline">
+    ### GitHub Actions Workflow
+
+    Automate exports on design changes:
+
+    ```yaml
+    # .github/workflows/figma-export.yml
+    name: Export Figma Components
+
+    on:
+      schedule:
+        - cron: '0 9 * * MON' # Every Monday at 9 AM
+      workflow_dispatch: # Manual trigger
+
+    jobs:
+      export:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v3
+
+          - name: Setup Node.js
+            uses: actions/setup-node@v3
+            with:
+              node-version: '18'
+
+          - name: Install dependencies
+            run: npm ci
+
+          - name: Export Figma components
+            env:
+              FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
+            run: |
+              npx figma-to-react-native \
+                --config=figma-rn.config.js \
+                --verbose
+
+          - name: Create Pull Request
+            uses: peter-evans/create-pull-request@v5
+            with:
+              title: '🎨 Update Figma components'
+              body: 'Auto-generated component updates from Figma'
+              branch: figma-component-updates
+    ```
+  </Tab>
+</Tabs>
+
+---
+
+## 🎯 Export Strategies
+
+<Accordions type="single">
+  <Accordion title="🎨 Design System Export" id="design-system">
+    ### Complete Design System Workflow
+
+    **Best for:** Teams with established design systems
+
+    <Steps>
+    <Step>
+    ### Organize Your Figma File
+
+    Structure your components for optimal export:
+
+    ```
+    📄 Design System File
+    ├── 🎨 Foundations
+    │   ├── Colors
+    │   ├── Typography
+    │   └── Spacing
+    ├── 🧩 Components
+    │   ├── Atoms (Button, Input, Icon)
+    │   ├── Molecules (Card, Form Field)
+    │   └── Organisms (Header, Navigation)
+    └── 📱 Templates
+        ├── Screens
+        └── Layouts
+    ```
+    </Step>
+
+    <Step>
+    ### Configure Export Settings
+
+    ```javascript
+    // figma-design-system.config.js
+    module.exports = {
+      token: process.env.FIGMA_TOKEN,
+      fileUrl: process.env.FIGMA_DESIGN_SYSTEM_URL,
+      outputDir: "./src/design-system",
+
+      organizationMode: "by-component-type",
+      typescript: true,
+      generateIndex: true,
+
+      // Export only published components
+      onlyPublished: true,
+
+      // Custom organization
+      directoryStructure: {
+        atoms: "./src/components/atoms",
+        molecules: "./src/components/molecules",
+        organisms: "./src/components/organisms"
+      }
+    };
+    ```
+    </Step>
+
+    <Step>
+    ### Generate Design Tokens
+
+    ```bash
+    # Export with design tokens
+    figma-to-react-native \
+      --config=figma-design-system.config.js \
+      --generate-tokens \
+      --tokens-format=json,js,css
+    ```
+
+    This creates:
+    ```
+    src/design-system/
+    ├── tokens/
+    │   ├── colors.json
+    │   ├── typography.json
+    │   └── spacing.json
+    ├── components/
+    └── index.ts
+    ```
+    </Step>
+    </Steps>
+  </Accordion>
+
+  <Accordion title="🚀 Feature-Specific Export" id="feature-export">
+    ### Targeted Component Export
+
+    **Best for:** Specific features or rapid prototyping
+
+    ```bash
+    # Export specific components for a feature
+    figma-to-react-native \
+      --file="https://www.figma.com/file/..." \
+      --components="LoginButton,SignupForm,UserProfile" \
+      --output="./src/features/auth/components" \
+      --typescript
+    ```
+
+    ### Smart Component Selection
+
+    ```javascript
+    // Select components by naming patterns
+    const config = {
+      componentFilter: (component) => {
+        // Export only components starting with "Auth"
+        return component.name.startsWith('Auth');
+      },
+
+      // Or use regex patterns
+      includePatterns: [
+        /^Button/,
+        /Card$/,
+        /^Icon.*/
+      ]
+    };
+    ```
+
+    ### Batch Export by Pages
+
+    ```bash
+    # Export each page separately
+    figma-to-react-native \
+      --file="$FIGMA_URL" \
+      --organize-by-page \
+      --page-filter="Authentication,Dashboard,Profile"
+    ```
+  </Accordion>
+
+  <Accordion title="🔄 Incremental Updates" id="incremental">
+    ### Smart Update Detection
+
+    **Best for:** Ongoing projects with frequent design changes
+
+    ```javascript
+    // Track component versions
+    const config = {
+      incrementalMode: true,
+      versionTracking: true,
+
+      // Only export changed components
+      onlyModified: true,
+
+      // Compare with previous export
+      compareWith: './previous-export-manifest.json',
+
+      // Custom change detection
+      changeDetection: {
+        checkStyles: true,
+        checkText: true,
+        checkAssets: true,
+        ignoreMinorChanges: true
+      }
+    };
+    ```
+
+    ### Version Control Integration
+
+    ```bash
+    # Export with git integration
+    figma-to-react-native \
+      --incremental \
+      --git-commit \
+      --commit-message="Update components from Figma" \
+      --create-pr
+    ```
+
+    <Callout type="info">
+    **Pro Tip:** Use incremental exports to avoid regenerating unchanged components, saving time and preserving custom modifications.
+    </Callout>
+  </Accordion>
+
+  <Accordion title="🎭 Multi-Variant Components" id="variants">
+    ### Component Variants & States
+
+    Handle Figma variants like a pro:
+
+    ```javascript
+    // Variant configuration
+    const config = {
+      variantHandling: "props", // "props" | "separate" | "styled"
+
+      // Convert Figma variants to React props
+      variantMapping: {
+        "Size": "size", // Size=Large becomes size="large"
+        "State": "state", // State=Hover becomes state="hover"
+        "Type": "variant" // Type=Primary becomes variant="primary"
+      },
+
+      // Generate TypeScript interfaces
+      generateVariantTypes: true
+    };
+    ```
+
+    **Generated Component:**
+    ```tsx
+    interface ButtonProps {
+      size?: 'small' | 'medium' | 'large';
+      variant?: 'primary' | 'secondary' | 'ghost';
+      state?: 'default' | 'hover' | 'disabled';
+    }
+
+    export const Button: React.FC<ButtonProps> = ({
+      size = 'medium',
+      variant = 'primary',
+      state = 'default',
+      ...props
+    }) => {
+      // Component implementation
+    };
+    ```
+
+    ### Auto-Generated Storybook Stories
+
+    ```bash
+    # Export with Storybook integration
+    figma-to-react-native \
+      --generate-stories \
+      --storybook-format=csf3 \
+      --include-variants
+    ```
+  </Accordion>
+</Accordions>
+
+---
+
+## ⚙️ Advanced Configuration
+
+### Environment Setup
+
+<Tabs items={['Development', 'Staging', 'Production']}>
+  <Tab value="Development">
+    ```bash
+    # .env.development
+    FIGMA_TOKEN=your_dev_token
+    FIGMA_FILE_URL=https://www.figma.com/file/.../dev-file
+    OUTPUT_DIR=./src/components/dev
+    EXPORT_MODE=development
+    INCLUDE_DEBUG_INFO=true
+    ```
+
+    ```javascript
+    // figma-dev.config.js
+    module.exports = {
+      ...require('./figma-base.config'),
+
+      // Development-specific settings
+      verbose: true,
+      includeDebugInfo: true,
+      skipOptimization: true,
+      hotReload: true,
+
+      // Generate additional debug files
+      generateManifest: true,
+      exportMetadata: true
+    };
+    ```
+  </Tab>
+
+  <Tab value="Staging">
+    ```bash
+    # .env.staging
+    FIGMA_TOKEN=your_staging_token
+    FIGMA_FILE_URL=https://www.figma.com/file/.../staging-file
+    OUTPUT_DIR=./src/components/staging
+    EXPORT_MODE=staging
+    OPTIMIZE_ASSETS=true
+    ```
+  </Tab>
+
+  <Tab value="Production">
+    ```bash
+    # .env.production
+    FIGMA_TOKEN=your_prod_token
+    FIGMA_FILE_URL=https://www.figma.com/file/.../prod-file
+    OUTPUT_DIR=./src/components
+    EXPORT_MODE=production
+    OPTIMIZE_EVERYTHING=true
+    ```
+
+    ```javascript
+    // figma-prod.config.js
+    module.exports = {
+      ...require('./figma-base.config'),
+
+      // Production optimizations
+      optimizeImages: true,
+      minifyCode: true,
+      treeshaking: true,
+      generateSourceMaps: false,
+
+      // Quality assurance
+      validateComponents: true,
+      runTests: true,
+      generateDocs: true
+    };
+    ```
+  </Tab>
+</Tabs>
+
+### Custom Processors & Plugins
+
+```javascript
+// custom-processors.js
+class CustomStyleProcessor {
+  process(styles) {
+    return {
+      ...styles,
+      // Add custom transformations
+      borderRadius: this.normalizeBorderRadius(styles.borderRadius),
+      colors: this.convertColors(styles.colors)
+    };
+  }
+}
+
+class ReactNativeOptimizer {
+  optimize(component) {
+    // Remove unsupported properties
+    // Add React Native specific optimizations
+    // Generate platform-specific variants
+  }
+}
+
+// Usage in config
+module.exports = {
+  processors: [
+    new CustomStyleProcessor(),
+    new ReactNativeOptimizer(),
+    new TypeScriptGenerator(),
+    new StorybookGenerator()
+  ]
+};
+```
+
+---
+
+## 📊 Export Analytics & Monitoring
+
+<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+  <div className="p-6 border rounded-lg">
+    ### 📈 Export Metrics
+
+    Track your export performance:
+
+    ```javascript
+    const analytics = {
+      componentsExported: 47,
+      exportTime: "2.3s",
+      filesGenerated: 94,
+      assetsProcessed: 23,
+      codeReduction: "15%"
+    };
+    ```
+  </div>
+
+  <div className="p-6 border rounded-lg">
+    ### 🔍 Quality Checks
+
+    Automated validation:
+
+    - ✅ Component naming conventions
+    - ✅ TypeScript type safety
+    - ✅ Accessibility compliance
+    - ✅ Performance metrics
+    - ✅ Design token consistency
+  </div>
+</div>
+
+### Export Reports
+
+```bash
+# Generate detailed export report
+figma-to-react-native \
+  --generate-report \
+  --report-format=html,json \
+  --include-metrics \
+  --performance-analysis
+```
+
+**Generated Report Includes:**
+- Component inventory
+- Style analysis
+- Asset optimization results
+- Performance recommendations
+- Design system compliance
+
+---
+
+## 🎨 Asset & Image Handling
+
+<Accordions type="single">
+  <Accordion title="🖼️ Image Export Options" id="images">
+    ### Automatic Image Export
+
+    ```javascript
+    const config = {
+      exportImages: true,
+      imageFormats: ['png', 'svg', 'webp'],
+      imageOptimization: {
+        png: { quality: 90, compression: true },
+        svg: { removeComments: true, optimize: true },
+        webp: { quality: 85 }
+      },
+
+      // Responsive images
+      generateMultipleResolutions: true,
+      resolutions: ['1x', '2x', '3x'],
+
+      // React Native specific
+      generateImageSets: true // Creates @2x, @3x variants
+    };
+    ```
+
+    ### Custom Image Processing
+
+    ```javascript
+    const imageProcessor = {
+      process: (image) => ({
+        ...image,
+        // Add custom processing
+        optimized: true,
+        cloudinaryUrl: generateCloudinaryUrl(image),
+        base64Preview: generateBase64Preview(image)
+      })
+    };
+    ```
+  </Accordion>
+
+  <Accordion title="🎯 Icon Generation" id="icons">
+    ### SVG Icon Optimization
+
+    ```bash
+    # Export with icon optimization
+    figma-to-react-native \
+      --optimize-icons \
+      --icon-format=react-native-svg \
+      --generate-icon-font
+    ```
+
+    **Generated Icon Component:**
+    ```tsx
+    import Svg, { Path } from 'react-native-svg';
+
+    interface IconProps {
+      size?: number;
+      color?: string;
+    }
+
+    export const ChevronIcon: React.FC<IconProps> = ({
+      size = 24,
+      color = '#000'
+    }) => (
+      <Svg width={size} height={size} viewBox="0 0 24 24">
+        <Path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" fill={color} />
+      </Svg>
+    );
+    ```
+  </Accordion>
+</Accordions>
+
+---
+
+## 🚀 Best Practices & Tips
+
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+  <div className="p-6 border rounded-lg">
+    ### ✅ Do's
+
+    - Use consistent naming conventions
+    - Organize components in Figma pages
+    - Publish components before exporting
+    - Test exports in development first
+    - Version control your configurations
+    - Document custom modifications
+  </div>
+
+  <div className="p-6 border rounded-lg">
+    ### ❌ Don'ts
+
+    - Don't commit Figma tokens to git
+    - Avoid overriding generated files directly
+    - Don't export too frequently (rate limits)
+    - Skip complex animations (manual work)
+    - Ignore TypeScript warnings
+    - Forget to test on actual devices
+  </div>
+</div>
+
+### Performance Optimization
+
+<Callout type="info">
+**Performance Tip:** Use incremental exports and component filtering to minimize export time and only update what's changed.
+</Callout>
+
+```javascript
+// Optimized export configuration
+const optimizedConfig = {
+  // Only export what's needed
+  incrementalMode: true,
+  skipUnchanged: true,
+
+  // Optimize output
+  treeshaking: true,
+  codeMinification: true,
+  assetOptimization: true,
+
+  // Parallel processing
+  concurrency: 4,
+  batchSize: 10
+};
+```
+
+---
+
+## 🔗 Integration Examples
+
+### Next.js Integration
+
+```javascript
+// next.config.js
+module.exports = {
+  webpack: (config) => {
+    // Add figma component resolution
+    config.resolve.alias['@figma'] = path.join(__dirname, 'src/components/figma');
+    return config;
+  }
+};
+```
+
+### React Native with Expo
+
+```json
+// app.json
+{
+  "expo": {
+    "assetBundlePatterns": [
+      "src/components/figma/assets/**"
+    ]
+  }
+}
+```
+
+### Storybook Integration
+
+```javascript
+// .storybook/main.js
+module.exports = {
+  stories: [
+    '../src/components/figma/**/*.stories.@(js|jsx|ts|tsx|mdx)'
+  ],
+  addons: [
+    '@storybook/addon-figma'
+  ]
+};
+```
+
+---
+
+## 📞 Need Help?
+
+<Callout type="info">
+**Expert Tip:** Start with small exports to test your workflow, then scale up to full design system exports once you're comfortable with the process.
+</Callout>
+
+Ready to export your first components? Check out our [troubleshooting guide](./troubleshooting) if you run into any issues, or explore our [advanced configuration examples](https://github.com/kattax/figma-to-react-native/tree/main/examples) for more complex setups.
