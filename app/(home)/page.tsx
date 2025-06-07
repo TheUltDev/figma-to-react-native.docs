@@ -173,7 +173,7 @@ function HomeBox({ title, description, iconPath, iconBgColor, iconColor, isLarge
 
       {/* Floating particles effect */}
       <div className="absolute top-4 right-4 w-2 h-2 bg-gradient-to-r from-[#1ABCFE] to-[#8049C7] rounded-full opacity-20 group-hover:opacity-60 transition-opacity duration-500 animate-pulse"></div>
-      <div className="absolute bottom-6 left-6 w-1 h-1 bg-gradient-to-r from-[#F24E1E] to-[#FF7262] rounded-full opacity-30 group-hover:opacity-70 transition-opacity duration-700 animate-pulse delay-300"></div>
+      <div className="absolute bottom-4 left-4 w-1 h-1 bg-gradient-to-r from-[#F24E1E] to-[#FF7262] rounded-full opacity-30 group-hover:opacity-70 transition-opacity duration-700 animate-pulse delay-300"></div>
 
       <div className="relative z-10">
         <div className={`w-16 h-16 ${iconBgColor} rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110 ${isLarge ? 'lg:mx-auto' : ''}`}>
@@ -209,7 +209,7 @@ function ArticleCard({ title, description, href }: ArticleCardProps) {
 
       {/* Floating particles effect */}
       <div className="absolute top-4 right-4 w-2 h-2 bg-gradient-to-r from-[#1ABCFE] to-[#8049C7] rounded-full opacity-20 group-hover:opacity-60 transition-opacity duration-500 animate-pulse"></div>
-      <div className="absolute bottom-6 left-6 w-1 h-1 bg-gradient-to-r from-[#0ACF83] to-[#099D64] rounded-full opacity-30 group-hover:opacity-70 transition-opacity duration-700 animate-pulse delay-300"></div>
+      <div className="absolute bottom-4 left-4 w-1 h-1 bg-gradient-to-r from-[#0ACF83] to-[#099D64] rounded-full opacity-30 group-hover:opacity-70 transition-opacity duration-700 animate-pulse delay-300"></div>
 
       <div className="relative z-10">
         <h3 className="text-xl font-bold mb-3 text-fd-foreground group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300 line-clamp-2">
