@@ -176,15 +176,13 @@ function HomeBox({ title, description, iconPath, iconBgColor, iconColor, isLarge
       <FloatingAtom
         className="top-4 right-4"
         nucleusColor="bg-gradient-to-r from-[#1ABCFE] to-[#8049C7]"
-        electronColor="bg-[#1ABCFE]"
+        electrons={['bg-[#1ABCFE]', 'bg-[#8049C7]']}
       />
       <FloatingAtom
         className="bottom-4 left-4"
         nucleusColor="bg-gradient-to-r from-[#F24E1E] to-[#FF7262]"
-        electronColor="bg-[#F24E1E]"
+        electrons={['bg-[#F24E1E]', 'bg-[#FF7262]']}
         size="w-1 h-1"
-        orbitSize="w-4 h-4"
-        orbitDuration="animate-[spin_6s_linear_infinite_reverse]"
       />
 
       <div className="relative z-10">
@@ -222,15 +220,13 @@ function ArticleCard({ title, description, href }: ArticleCardProps) {
       <FloatingAtom
         className="top-4 right-4"
         nucleusColor="bg-gradient-to-r from-[#1ABCFE] to-[#8049C7]"
-        electronColor="bg-[#1ABCFE]"
+        electrons={['bg-[#1ABCFE]', 'bg-[#8049C7]']}
       />
       <FloatingAtom
         className="bottom-4 left-4"
         nucleusColor="bg-gradient-to-r from-[#0ACF83] to-[#099D64]"
-        electronColor="bg-[#0ACF83]"
+        electrons={['bg-[#0ACF83]', 'bg-[#099D64]']}
         size="w-1 h-1"
-        orbitSize="w-4 h-4"
-        orbitDuration="animate-[spin_6s_linear_infinite_reverse]"
       />
 
       <div className="relative z-10">
