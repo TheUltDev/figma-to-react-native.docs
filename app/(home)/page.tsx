@@ -176,7 +176,7 @@ interface HomeBoxProps {
 
 function HomeBox({ title, description, iconPath, iconBgColor, iconColor, isLarge = false, index }: HomeBoxProps) {
   return (
-    <div className={`group relative bg-gradient-to-br from-white to-gray-50/50 dark:from-gray-900/50 dark:to-gray-800/50 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-2xl p-8 hover:shadow-2xl hover:shadow-gray-200/20 dark:hover:shadow-gray-900/20 transition-all duration-500 cursor-pointer overflow-hidden ${isLarge ? 'h-full flex flex-col justify-center' : ''}`}>
+    <div className={`group relative bg-gradient-to-br from-zinc-50 to-zinc-100 dark:from-zinc-900/50 dark:to-zinc-800/50 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 rounded-2xl p-8 hover:shadow-2xl hover:shadow-zinc-200/20 dark:hover:shadow-zinc-900/20 transition-all duration-500 cursor-pointer overflow-hidden ${isLarge ? 'h-full flex flex-col justify-center' : ''}`}>
       <GlassBackground />
       <FloatingAtom className="top-4 right-4" electronCount={index + 1}/>
       <div className="relative z-10">
@@ -185,10 +185,10 @@ function HomeBox({ title, description, iconPath, iconBgColor, iconColor, isLarge
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={iconPath} />
           </svg>
         </div>
-        <h3 className={`text-xl font-bold mb-3 text-fd-foreground group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300 ${isLarge ? 'lg:text-center lg:text-2xl' : ''}`}>
+        <h3 className={`text-xl font-bold mb-3 text-fd-foreground group-hover:text-zinc-900 dark:group-hover:text-white transition-colors duration-300 ${isLarge ? 'lg:text-center lg:text-2xl' : ''}`}>
           {title}
         </h3>
-        <p className={`text-fd-muted-foreground group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-300 leading-relaxed ${isLarge ? 'lg:text-center lg:text-lg' : ''}`}>
+        <p className={`text-fd-muted-foreground group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors duration-300 leading-relaxed ${isLarge ? 'lg:text-center lg:text-lg' : ''}`}>
           {description}
         </p>
       </div>
@@ -205,7 +205,7 @@ interface ArticleCardProps {
 
 function ArticleCard({ title, description, href, index }: ArticleCardProps) {
   return (
-    <a href={href} className="group relative block bg-gradient-to-br from-white to-gray-50/50 dark:from-gray-900/50 dark:to-gray-800/50 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-2xl p-8 hover:shadow-2xl hover:shadow-gray-200/20 dark:hover:shadow-gray-900/20 transition-all duration-500 cursor-pointer overflow-hidden hover:-translate-y-1 hover:scale-[1.02]">
+    <a href={href} className="group relative block bg-gradient-to-br from-zinc-50 to-zinc-100 dark:from-zinc-900/50 dark:to-zinc-800/50 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 rounded-2xl p-8 hover:shadow-2xl hover:shadow-zinc-200/20 dark:hover:shadow-zinc-900/20 transition-all duration-500 cursor-pointer overflow-hidden hover:-translate-y-1 hover:scale-[1.02]">
       <GlassBackground />
       <FloatingAtom
         className="top-4 right-4"
@@ -221,10 +221,10 @@ function ArticleCard({ title, description, href, index }: ArticleCardProps) {
         ]}
       />
       <div className="relative z-10">
-        <h3 className="text-xl font-bold mb-3 text-fd-foreground group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300 line-clamp-2">
+        <h3 className="text-xl font-bold mb-3 text-fd-foreground group-hover:text-zinc-900 dark:group-hover:text-white transition-colors duration-300 line-clamp-2">
           {title}
         </h3>
-        <p className="text-fd-muted-foreground group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-300 leading-relaxed line-clamp-3">
+        <p className="text-fd-muted-foreground group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors duration-300 leading-relaxed line-clamp-3">
           {description}
         </p>
         <div className="mt-4 flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors duration-300">
