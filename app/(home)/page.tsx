@@ -1,5 +1,6 @@
 import { GlassBackground } from "../components/GlassBackground";
 import { FloatingAtom } from "../components/FloatingAtom";
+import Link from "next/link";
 
 export default function HomePage() {
   const guides = [
@@ -9,6 +10,7 @@ export default function HomePage() {
       iconBgColor: "bg-gradient-to-br from-gray-500 to-gray-600",
       iconColor: "text-white",
       iconPath: "M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10",
+      href: "/docs/guides/installing"
     },
     {
       title: "Troubleshooting",
@@ -16,6 +18,7 @@ export default function HomePage() {
       iconBgColor: "bg-gradient-to-br from-[#F24E1E] to-[#FF7262]",
       iconColor: "text-white",
       iconPath: "m8 2 1.88 1.88M14.12 3.88 16 2M9 7.13v-1a3.003 3.003 0 1 1 6 0v1M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6M12 20v-9M6.53 9C4.6 8.8 3 7.1 3 5M6 13H2M3 21c0-2.1 1.7-3.9 3.8-4M20.97 5c0 2.1-1.6 3.8-3.5 4M22 13h-4M17.2 17c2.1.1 3.8 1.9 3.8 4",
+      href: "/docs/guides/troubleshooting"
     },
     {
       title: "Designing",
@@ -23,6 +26,7 @@ export default function HomePage() {
       iconBgColor: "bg-gradient-to-br from-[#1ABCFE] to-[#1C87B3]",
       iconColor: "text-white",
       iconPath: "M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z",
+      href: "/docs/guides/designing"
     },
     {
       title: "Exporting",
@@ -30,6 +34,7 @@ export default function HomePage() {
       iconBgColor: "bg-gradient-to-br from-[#0ACF83] to-[#099D64]",
       iconColor: "text-white",
       iconPath: "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4",
+      href: "/docs/guides/exporting"
     },
     {
       title: "Syncing",
@@ -37,6 +42,7 @@ export default function HomePage() {
       iconBgColor: "bg-gradient-to-br from-[#8049C7] to-[#A259FF]",
       iconColor: "text-white",
       iconPath: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15",
+      href: "/docs/guides/syncing"
     }
   ];
 
@@ -96,6 +102,7 @@ export default function HomePage() {
                 iconBgColor={guides[0].iconBgColor}
                 iconColor={guides[0].iconColor}
                 iconPath={guides[0].iconPath}
+                href={guides[0].href}
               />
               <HomeBox
                 index={1}
@@ -104,6 +111,7 @@ export default function HomePage() {
                 iconBgColor={guides[1].iconBgColor}
                 iconColor={guides[1].iconColor}
                 iconPath={guides[1].iconPath}
+                href={guides[1].href}
               />
             </div>
             {/* Syncing Box - Left centered on < 1024px */}
@@ -116,6 +124,7 @@ export default function HomePage() {
                 iconColor={guides[4].iconColor}
                 iconPath={guides[4].iconPath}
                 isLarge={true}
+                href={guides[4].href}
               />
             </div>
             {/* Second Row - 2 Boxes */}
@@ -126,6 +135,7 @@ export default function HomePage() {
               iconBgColor={guides[2].iconBgColor}
               iconColor={guides[2].iconColor}
               iconPath={guides[2].iconPath}
+              href={guides[2].href}
             />
             <HomeBox
               index={4}
@@ -134,6 +144,7 @@ export default function HomePage() {
               iconBgColor={guides[3].iconBgColor}
               iconColor={guides[3].iconColor}
               iconPath={guides[3].iconPath}
+              href={guides[3].href}
             />
           </div>
         </div>
@@ -172,11 +183,12 @@ interface HomeBoxProps {
   iconColor: string;
   isLarge?: boolean;
   index: number;
+  href: string;
 }
 
-function HomeBox({ title, description, iconPath, iconBgColor, iconColor, isLarge = false, index }: HomeBoxProps) {
+function HomeBox({ title, description, iconPath, iconBgColor, iconColor, isLarge = false, index, href }: HomeBoxProps) {
   return (
-    <div className={`group relative bg-gradient-to-br from-zinc-50 to-zinc-100 dark:from-zinc-900/50 dark:to-zinc-800/50 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 rounded-2xl p-8 hover:shadow-2xl hover:shadow-zinc-200/20 dark:hover:shadow-zinc-900/20 transition-all duration-500 cursor-pointer overflow-hidden ${isLarge ? 'h-full flex flex-col justify-center' : ''}`}>
+    <Link href={href} className={`group relative bg-gradient-to-br from-zinc-50 to-zinc-100 dark:from-zinc-900/50 dark:to-zinc-800/50 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 rounded-2xl p-8 hover:shadow-2xl hover:shadow-zinc-200/20 dark:hover:shadow-zinc-900/20 transition-all duration-500 cursor-pointer overflow-hidden ${isLarge ? 'h-full flex flex-col justify-center' : ''}`}>
       <GlassBackground />
       <FloatingAtom className="top-4 right-4" electronCount={index + 1}/>
       <div className="relative z-10">
@@ -192,7 +204,7 @@ function HomeBox({ title, description, iconPath, iconBgColor, iconColor, isLarge
           {description}
         </p>
       </div>
-    </div>
+    </Link>
   );
 }
 
@@ -205,7 +217,7 @@ interface ArticleCardProps {
 
 function ArticleCard({ title, description, href, index }: ArticleCardProps) {
   return (
-    <a href={href} className="group relative block bg-gradient-to-br from-zinc-50 to-zinc-100 dark:from-zinc-900/50 dark:to-zinc-800/50 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 rounded-2xl p-8 hover:shadow-2xl hover:shadow-zinc-200/20 dark:hover:shadow-zinc-900/20 transition-all duration-500 cursor-pointer overflow-hidden hover:-translate-y-1 hover:scale-[1.02]">
+    <Link href={href} className="group relative block bg-gradient-to-br from-zinc-50 to-zinc-100 dark:from-zinc-900/50 dark:to-zinc-800/50 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 rounded-2xl p-8 hover:shadow-2xl hover:shadow-zinc-200/20 dark:hover:shadow-zinc-900/20 transition-all duration-500 cursor-pointer overflow-hidden hover:-translate-y-1 hover:scale-[1.02]">
       <GlassBackground />
       <FloatingAtom
         className="top-4 right-4"
@@ -234,6 +246,6 @@ function ArticleCard({ title, description, href, index }: ArticleCardProps) {
           </svg>
         </div>
       </div>
-    </a>
+    </Link>
   );
 }
