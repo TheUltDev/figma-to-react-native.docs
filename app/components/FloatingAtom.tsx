@@ -21,21 +21,29 @@ export function FloatingAtom({
   const durationIncrement = 2; // seconds
 
   const largestOrbitSize = baseOrbitSize + (electrons.length > 0 ? electrons.length - 1 : 0) * orbitSizeIncrement;
-  const containerSize = `w-${largestOrbitSize} h-${largestOrbitSize}`;
+
+  const containerStyle = {
+    width: `${largestOrbitSize / 4}rem`,
+    height: `${largestOrbitSize / 4}rem`,
+  };
 
   return (
     <div className={`absolute ${className}`}>
-      <div className={`relative group ${containerSize}`}>
+      <div className="relative group" style={containerStyle}>
         {electrons.map((electronColor, index) => {
           const orbitSizeVal = baseOrbitSize + index * orbitSizeIncrement;
-          const orbitSize = `w-${orbitSizeVal} h-${orbitSizeVal}`;
           const duration = baseDuration + index * durationIncrement;
-          const orbitDuration = `animate-[spin_${duration}s_linear_infinite${index % 2 === 1 ? '_reverse' : ''}]`;
+          const orbitStyle = {
+            width: `${orbitSizeVal / 4}rem`,
+            height: `${orbitSizeVal / 4}rem`,
+            animation: `spin ${duration}s linear infinite ${index % 2 === 1 ? 'reverse' : ''}`,
+          };
 
           return (
             <div
               key={index}
-              className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ${orbitSize} ${orbitDuration} opacity-30 group-hover:opacity-70 transition-opacity duration-700`}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-30 group-hover:opacity-70 transition-opacity duration-700"
+              style={orbitStyle}
             >
               {/* Orbit path */}
               <div className="absolute inset-0 border border-white/20 rounded-full"></div>
