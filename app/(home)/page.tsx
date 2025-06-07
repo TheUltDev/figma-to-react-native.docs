@@ -1,3 +1,4 @@
+import { GlassBackground } from "../components/GlassBackground";
 import { FloatingAtom } from "../components/FloatingAtom";
 
 export default function HomePage() {
@@ -174,23 +175,10 @@ interface HomeBoxProps {
 }
 
 function HomeBox({ title, description, iconPath, iconBgColor, iconColor, isLarge = false, index }: HomeBoxProps) {
-  const electronCount = index + 1;
-  const electronColors = [
-    'bg-[#1ABCFE]',
-    'bg-[#8049C7]',
-    'bg-sky-400',
-    'bg-sky-400',
-    'bg-sky-400',
-  ].slice(0, electronCount);
   return (
     <div className={`group relative bg-gradient-to-br from-white to-gray-50/50 dark:from-gray-900/50 dark:to-gray-800/50 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-2xl p-8 hover:shadow-2xl hover:shadow-gray-200/20 dark:hover:shadow-gray-900/20 transition-all duration-500 cursor-pointer overflow-hidden ${isLarge ? 'h-full flex flex-col justify-center' : ''}`}>
-      {/* Animated background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/40 dark:via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-      <FloatingAtom
-        className="top-4 right-4"
-        nucleusColor="bg-gradient-to-r from-[#1ABCFE] to-[#8049C7]"
-        electrons={electronColors}
-      />
+      <GlassBackground />
+      <FloatingAtom className="top-4 right-4" electronCount={index + 1}/>
       <div className="relative z-10">
         <div className={`w-16 h-16 ${iconBgColor} rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110 ${isLarge ? 'lg:mx-auto' : ''}`}>
           <svg className={`w-8 h-8 ${iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -216,22 +204,21 @@ interface ArticleCardProps {
 }
 
 function ArticleCard({ title, description, href, index }: ArticleCardProps) {
-  const electronCount = index + 1;
-  const electronColors = [
-    'bg-[#1ABCFE]',
-    'bg-[#8049C7]',
-    'bg-sky-400',
-    'bg-sky-400',
-    'bg-sky-400',
-  ].slice(0, electronCount);
   return (
     <a href={href} className="group relative block bg-gradient-to-br from-white to-gray-50/50 dark:from-gray-900/50 dark:to-gray-800/50 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-2xl p-8 hover:shadow-2xl hover:shadow-gray-200/20 dark:hover:shadow-gray-900/20 transition-all duration-500 cursor-pointer overflow-hidden hover:-translate-y-1 hover:scale-[1.02]">
-      {/* Animated background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/40 dark:via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+      <GlassBackground />
       <FloatingAtom
         className="top-4 right-4"
-        nucleusColor="bg-gradient-to-r from-[#1ABCFE] to-[#8049C7]"
-        electrons={electronColors}
+        nucleus="bg-gradient-to-r from-sky-400 to-sky-700"
+        electronCount={index + 1}
+        electrons={[
+          'bg-sky-200',
+          'bg-sky-300',
+          'bg-sky-400',
+          'bg-sky-500',
+          'bg-sky-600',
+          'bg-sky-700',
+        ]}
       />
       <div className="relative z-10">
         <h3 className="text-xl font-bold mb-3 text-fd-foreground group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300 line-clamp-2">
