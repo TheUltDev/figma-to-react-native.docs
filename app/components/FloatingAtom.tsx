@@ -53,7 +53,7 @@ export function FloatingAtom({
               style={style}
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-30 group-hover:opacity-70 transition-opacity duration-700">
               {/* Orbit */}
-              <div className="absolute inset-0 border border-white/20 rounded-full"></div>
+              <div className="absolute inset-0 border border-black/20 dark:border-white/20 rounded-full"></div>
               {/* Electron */}
               <div className={`absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 ${electronSize} ${electronColor} rounded-full`}/>
             </div>
