@@ -209,15 +209,15 @@ function ArticleCard({ title, description, href, index }: ArticleCardProps) {
       <GlassBackground />
       <FloatingAtom
         className="top-4 right-4"
-        nucleus="bg-gradient-to-r from-sky-400 to-sky-700"
+        nucleus="bg-gradient-to-r from-blue-400 to-blue-700"
         electronCount={index + 1}
         electrons={[
-          'bg-sky-200',
-          'bg-sky-300',
-          'bg-sky-400',
-          'bg-sky-500',
-          'bg-sky-600',
-          'bg-sky-700',
+          'bg-blue-500',
+          'bg-blue-200',
+          'bg-blue-400',
+          'bg-blue-600',
+          'bg-blue-300',
+          'bg-blue-700',
         ]}
       />
       <div className="relative z-10">
