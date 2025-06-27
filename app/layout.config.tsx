@@ -1,5 +1,5 @@
-import { SiDiscord, SiGithub, SiX } from '@icons-pack/react-simple-icons';
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
+import { SiDiscord, SiGithub, SiX } from '@icons-pack/react-simple-icons';
 
 /**
  * Shared layout configurations
@@ -63,20 +63,23 @@ export const baseOptions: BaseLayoutProps = {
     {
       icon: <SiGithub />,
       text: 'GitHub',
-      type: 'icon',
       url: 'https://github.com/kat-tax/figma-to-react-native',
+      type: 'icon',
+      external: true,
     },
     {
       icon: <SiX />,
       text: '𝕏',
       type: 'icon',
+      external: true,
       url: 'https://x.com/theultdev',
     },
     {
       icon: <SiDiscord />,
       text: 'Discord',
-      type: 'icon',
       url: 'https://discord.kat.tax',
+      type: 'icon',
+      external: true,
     },
   ],
 };
