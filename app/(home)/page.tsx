@@ -1,5 +1,6 @@
 import { GlassBackground } from "../components/GlassBackground";
 import { FloatingAtom } from "../components/FloatingAtom";
+import { BugIcon, CloudDownload, RefreshCcw, LayoutDashboard, FolderInput } from "lucide-react";
 import Link from "next/link";
 
 export default function HomePage() {
@@ -7,41 +8,36 @@ export default function HomePage() {
     {
       title: "Installing",
       description: "Learn how to install the plugin and get started.",
-      iconBgColor: "bg-gradient-to-br from-gray-500 to-gray-600",
-      iconColor: "text-white",
-      iconPath: "M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10",
+      badgeColor: "bg-gradient-to-br from-gray-500 to-gray-600",
+      icon: <CloudDownload size={32}/>,
       href: "/docs/guides/installing"
     },
     {
       title: "Troubleshooting",
       description: "Check if you're experiencing common issues.",
-      iconBgColor: "bg-gradient-to-br from-[#F24E1E] to-[#FF7262]",
-      iconColor: "text-white",
-      iconPath: "m8 2 1.88 1.88M14.12 3.88 16 2M9 7.13v-1a3.003 3.003 0 1 1 6 0v1M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6M12 20v-9M6.53 9C4.6 8.8 3 7.1 3 5M6 13H2M3 21c0-2.1 1.7-3.9 3.8-4M20.97 5c0 2.1-1.6 3.8-3.5 4M22 13h-4M17.2 17c2.1.1 3.8 1.9 3.8 4",
+      badgeColor: "bg-gradient-to-br from-[#F24E1E] to-[#FF7262]",
+      icon: <BugIcon size={32}/>,
       href: "/docs/guides/troubleshooting"
     },
     {
       title: "Designing",
       description: "Guides for creating components and using the design system.",
-      iconBgColor: "bg-gradient-to-br from-[#1ABCFE] to-[#1C87B3]",
-      iconColor: "text-white",
-      iconPath: "M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z",
+      badgeColor: "bg-gradient-to-br from-[#1ABCFE] to-[#1C87B3]",
+      icon: <LayoutDashboard size={32}/>,
       href: "/docs/guides/designing"
     },
     {
       title: "Exporting",
       description: "Export your Figma designs for use in your React Native project.",
-      iconBgColor: "bg-gradient-to-br from-[#0ACF83] to-[#099D64]",
-      iconColor: "text-white",
-      iconPath: "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4",
+      badgeColor: "bg-gradient-to-br from-[#0ACF83] to-[#099D64]",
+      icon: <FolderInput size={32}/>,
       href: "/docs/guides/exporting"
     },
     {
       title: "Syncing",
       description: "Use MCP for AI agents or real-time syncing to your filesystem.",
-      iconBgColor: "bg-gradient-to-br from-[#8049C7] to-[#A259FF]",
-      iconColor: "text-white",
-      iconPath: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15",
+      badgeColor: "bg-gradient-to-br from-[#8049C7] to-[#A259FF]",
+      icon: <RefreshCcw size={32}/>,
       href: "/docs/guides/syncing"
     }
   ];
@@ -99,18 +95,16 @@ export default function HomePage() {
                 index={0}
                 title={guides[0].title}
                 description={guides[0].description}
-                iconBgColor={guides[0].iconBgColor}
-                iconColor={guides[0].iconColor}
-                iconPath={guides[0].iconPath}
+                badgeColor={guides[0].badgeColor}
+                icon={guides[0].icon}
                 href={guides[0].href}
               />
               <HomeBox
                 index={1}
                 title={guides[1].title}
                 description={guides[1].description}
-                iconBgColor={guides[1].iconBgColor}
-                iconColor={guides[1].iconColor}
-                iconPath={guides[1].iconPath}
+                badgeColor={guides[1].badgeColor}
+                icon={guides[1].icon}
                 href={guides[1].href}
               />
             </div>
@@ -120,9 +114,8 @@ export default function HomePage() {
                 index={2}
                 title={guides[4].title}
                 description={guides[4].description}
-                iconBgColor={guides[4].iconBgColor}
-                iconColor={guides[4].iconColor}
-                iconPath={guides[4].iconPath}
+                badgeColor={guides[4].badgeColor}
+                icon={guides[4].icon}
                 isLarge={true}
                 href={guides[4].href}
               />
@@ -132,18 +125,16 @@ export default function HomePage() {
               index={3}
               title={guides[2].title}
               description={guides[2].description}
-              iconBgColor={guides[2].iconBgColor}
-              iconColor={guides[2].iconColor}
-              iconPath={guides[2].iconPath}
+              badgeColor={guides[2].badgeColor}
+              icon={guides[2].icon}
               href={guides[2].href}
             />
             <HomeBox
               index={4}
               title={guides[3].title}
               description={guides[3].description}
-              iconBgColor={guides[3].iconBgColor}
-              iconColor={guides[3].iconColor}
-              iconPath={guides[3].iconPath}
+              badgeColor={guides[3].badgeColor}
+              icon={guides[3].icon}
               href={guides[3].href}
             />
           </div>
@@ -176,26 +167,23 @@ export default function HomePage() {
 }
 
 interface HomeBoxProps {
+  icon: React.ReactNode;
   title: string;
   description: string;
-  iconPath: string;
-  iconBgColor: string;
-  iconColor: string;
+  badgeColor: string;
   isLarge?: boolean;
   index: number;
   href: string;
 }
 
-function HomeBox({ title, description, iconPath, iconBgColor, iconColor, isLarge = false, index, href }: HomeBoxProps) {
+function HomeBox({ icon, title, description, badgeColor, isLarge = false, index, href }: HomeBoxProps) {
   return (
     <Link href={href} className={`group relative bg-gradient-to-br from-zinc-50 to-zinc-100 dark:from-zinc-900/50 dark:to-zinc-800/50 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 rounded-2xl p-8 hover:shadow-2xl hover:shadow-zinc-200/20 dark:hover:shadow-zinc-900/20 transition-all duration-500 cursor-pointer overflow-hidden ${isLarge ? 'h-full flex flex-col justify-center' : ''}`}>
       <GlassBackground />
       <FloatingAtom className="top-4 right-4" electronCount={index + 1}/>
       <div className="relative z-10">
-        <div className={`w-16 h-16 ${iconBgColor} rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110 ${isLarge ? 'lg:mx-auto' : ''}`}>
-          <svg className={`w-8 h-8 ${iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={iconPath} />
-          </svg>
+        <div className={`w-16 h-16 ${badgeColor} rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110 ${isLarge ? 'lg:mx-auto' : ''}`}>
+          {icon}
         </div>
         <h3 className={`text-xl font-bold mb-3 text-fd-foreground group-hover:text-zinc-900 dark:group-hover:text-white transition-colors duration-300 ${isLarge ? 'lg:text-center lg:text-2xl' : ''}`}>
           {title}

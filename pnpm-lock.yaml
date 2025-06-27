@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@icons-pack/react-simple-icons':
+        specifier: ^13.2.0
+        version: 13.2.0(react@19.1.0)
       fumadocs-core:
         specifier: 15.5.5
         version: 15.5.5(@types/react@19.1.8)(next@15.3.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -17,6 +20,9 @@ importers:
       fumadocs-ui:
         specifier: 15.5.5
         version: 15.5.5(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(next@15.3.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(tailwindcss@4.1.11)
+      lucide-react:
+        specifier: ^0.525.0
+        version: 0.525.0(react@19.1.0)
       next:
         specifier: 15.3.4
         version: 15.3.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -232,6 +238,11 @@ packages:
 
   '@formatjs/intl-localematcher@0.6.1':
     resolution: {integrity: sha512-ePEgLgVCqi2BBFnTMWPfIghu6FkbZnnBVhO2sSxvLfrdFw7wCHAHiDoM2h4NRgjbaY7+B7HgOLZGkK187pZTZg==}
+
+  '@icons-pack/react-simple-icons@13.2.0':
+    resolution: {integrity: sha512-c8qhUgBsiwykuPdc03ShhbyDZMODgoXG/vpT0xcafAI0v1KJCwtzepNLMIDCrSpmrRoQuwx/vgvtPGTgBdiw2Q==}
+    peerDependencies:
+      react: ^16.13 || ^17 || ^18 || ^19
 
   '@img/sharp-darwin-arm64@0.34.2':
     resolution: {integrity: sha512-OfXHZPppddivUJnqyKoi5YVeHRkkNE2zUFT2gbpKxp/JZCFYEYubnMg+gOp6lWfasPrTS+KPosKqdI+ELYVDtg==}
@@ -1317,6 +1328,11 @@ packages:
     resolution: {integrity: sha512-QIXZUBJUx+2zHUdQujWejBkcD9+cs94tLn0+YL8UrCh+D5sCXZ4c7LaEH48pNwRY3MLDgqUFyhlCyjJPf1WP0A==}
     engines: {node: 20 || >=22}
 
+  lucide-react@0.525.0:
+    resolution: {integrity: sha512-Tm1txJ2OkymCGkvwoHt33Y2JpN5xucVq1slHcgE6Lk0WjDfjgKWor5CdVER8U6DvcfMwh4M8XxmpTiyzfmfDYQ==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
+
   magic-string@0.30.17:
     resolution: {integrity: sha512-sNPKHvyjVf7gyjwS4xGTaW/mCnF8wnjtifKBEhxfZ7E/S8tQ0rssrwGNn6q8JH/ohItJfSQp9mBtQYuTlH5QnA==}
 
@@ -1919,6 +1935,10 @@ snapshots:
   '@formatjs/intl-localematcher@0.6.1':
     dependencies:
       tslib: 2.8.1
+
+  '@icons-pack/react-simple-icons@13.2.0(react@19.1.0)':
+    dependencies:
+      react: 19.1.0
 
   '@img/sharp-darwin-arm64@0.34.2':
     optionalDependencies:
@@ -3008,6 +3028,10 @@ snapshots:
   longest-streak@3.1.0: {}
 
   lru-cache@11.1.0: {}
+
+  lucide-react@0.525.0(react@19.1.0):
+    dependencies:
+      react: 19.1.0
 
   magic-string@0.30.17:
     dependencies:
