@@ -44,34 +44,34 @@ export default function HomePage() {
 
   const articles = [
     {
-      title: "Getting Started with Component Generation",
-      description: "Learn how to convert your first Figma component into production-ready React Native code with automatic variant support and clean prop APIs.",
-      href: "/docs/features#component-generation"
+      title: "Component configuration",
+      description: "Using properties and other Figma components features.",
+      href: "/docs/features/components"
     },
     {
-      title: "Building a Complete Design System",
-      description: "Extract colors, fonts, and design tokens from Figma variables to create a comprehensive theme system powered by react-native-unistyles.",
-      href: "/docs/theming"
+      title: "Pressable components",
+      description: "Creating pressable components.",
+      href: "/docs/features/pressables"
     },
     {
-      title: "Advanced Icon Management with Iconify",
-      description: "Import entire icon sets from Iconify and seamlessly integrate them into your Figma designs and generated React Native components.",
-      href: "/docs/advanced#icon-management"
+      title: "Icon system",
+      description: "Working with the icon system.",
+      href: "/docs/features/icons"
     },
     {
-      title: "Exporting Projects and Managing Assets",
-      description: "Master the art of exporting complete projects with optimized asset handling, including SVGs, PNGs, and even Lottie animations.",
-      href: "/docs/usage#building-a-project"
+      title: "The Node Toolbar",
+      description: "Overview of the node toolbar.",
+      href: "/docs/features/node-toolbar"
     },
     {
-      title: "Storybook Integration Best Practices",
-      description: "Automatically generate interactive Storybook stories for your components with prop controls and variant testing capabilities.",
-      href: "/docs/features#storybook-integration"
+      title: "Variants",
+      description: "Working with variant components in Figma.",
+      href: "/docs/features/variants"
     },
     {
       title: "Pre-built EXO Components Library",
-      description: "Speed up your development with ready-to-use UI components including buttons, sliders, popovers, and more from the EXO collection.",
-      href: "/docs/advanced#pre-built-components-exo"
+      description: "Using the EXO collection of components.",
+      href: "/docs/features/exo"
     }
   ];
 
