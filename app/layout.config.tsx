@@ -10,6 +10,7 @@ import { SiDiscord, SiGithub, SiX } from '@icons-pack/react-simple-icons';
  */
 export const baseOptions: BaseLayoutProps = {
   nav: {
+    url: 'https://figma-to-react-native.com',
     title: (
       <>
         <svg
