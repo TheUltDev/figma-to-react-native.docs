@@ -1,80 +1,12 @@
-import { GlassBackground } from "../components/GlassBackground";
-import { FloatingAtom } from "../components/FloatingAtom";
-import { BugIcon, CloudDownload, RefreshCcw, LayoutDashboard, FolderInput } from "lucide-react";
 import Link from "next/link";
+import { FloatingAtom } from "../components/FloatingAtom";
+import { GlassBackground } from "../components/GlassBackground";
+import { createGuides, createArticles } from "@/lib/pages";
+
+const guides = createGuides();
+const articles = createArticles();
 
 export default function HomePage() {
-  const guides = [
-    {
-      title: "Installing",
-      description: "Learn how to install the plugin and get started.",
-      badgeColor: "bg-gradient-to-br from-gray-500 to-gray-600",
-      icon: <CloudDownload size={32}/>,
-      href: "/docs/guides/installing"
-    },
-    {
-      title: "Troubleshooting",
-      description: "Check if you're experiencing common issues.",
-      badgeColor: "bg-gradient-to-br from-[#F24E1E] to-[#FF7262]",
-      icon: <BugIcon size={32}/>,
-      href: "/docs/guides/troubleshooting"
-    },
-    {
-      title: "Designing",
-      description: "Guides for creating components and using the design system.",
-      badgeColor: "bg-gradient-to-br from-[#1ABCFE] to-[#1C87B3]",
-      icon: <LayoutDashboard size={32}/>,
-      href: "/docs/guides/designing"
-    },
-    {
-      title: "Exporting",
-      description: "Export your Figma designs for use in your React Native project.",
-      badgeColor: "bg-gradient-to-br from-[#0ACF83] to-[#099D64]",
-      icon: <FolderInput size={32}/>,
-      href: "/docs/guides/exporting"
-    },
-    {
-      title: "Syncing",
-      description: "Use MCP for AI agents or real-time syncing to your filesystem.",
-      badgeColor: "bg-gradient-to-br from-[#8049C7] to-[#A259FF]",
-      icon: <RefreshCcw size={32}/>,
-      href: "/docs/guides/syncing"
-    }
-  ];
-
-  const articles = [
-    {
-      title: "Component configuration",
-      description: "Using properties and other Figma components features.",
-      href: "/docs/features/components"
-    },
-    {
-      title: "Pressable components",
-      description: "Creating pressable components.",
-      href: "/docs/features/pressables"
-    },
-    {
-      title: "Icon system",
-      description: "Working with the icon system.",
-      href: "/docs/features/icons"
-    },
-    {
-      title: "The Node Toolbar",
-      description: "Overview of the node toolbar.",
-      href: "/docs/features/node-toolbar"
-    },
-    {
-      title: "Variants",
-      description: "Working with variant components in Figma.",
-      href: "/docs/features/variants"
-    },
-    {
-      title: "Pre-built EXO Components Library",
-      description: "Using the EXO collection of components.",
-      href: "/docs/features/exo"
-    }
-  ];
-
   return (
     <main className="flex flex-1 flex-col py-20">
       <div className="container mx-auto px-4">
@@ -91,52 +23,16 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* First Row - 2 Boxes */}
             <div className="md:col-span-2 lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <HomeBox
-                index={0}
-                title={guides[0].title}
-                description={guides[0].description}
-                badgeColor={guides[0].badgeColor}
-                icon={guides[0].icon}
-                href={guides[0].href}
-              />
-              <HomeBox
-                index={1}
-                title={guides[1].title}
-                description={guides[1].description}
-                badgeColor={guides[1].badgeColor}
-                icon={guides[1].icon}
-                href={guides[1].href}
-              />
+              <GuideCard index={0}/>
+              <GuideCard index={1}/>
             </div>
             {/* Syncing Box - Left centered on < 1024px */}
             <div className="md:col-start-1 md:row-start-2 lg:col-start-3 lg:col-span-1 lg:row-span-2 lg:row-start-1">
-              <HomeBox
-                index={2}
-                title={guides[4].title}
-                description={guides[4].description}
-                badgeColor={guides[4].badgeColor}
-                icon={guides[4].icon}
-                isLarge={true}
-                href={guides[4].href}
-              />
+              <GuideCard index={2} large/>
             </div>
             {/* Second Row - 2 Boxes */}
-            <HomeBox
-              index={3}
-              title={guides[2].title}
-              description={guides[2].description}
-              badgeColor={guides[2].badgeColor}
-              icon={guides[2].icon}
-              href={guides[2].href}
-            />
-            <HomeBox
-              index={4}
-              title={guides[3].title}
-              description={guides[3].description}
-              badgeColor={guides[3].badgeColor}
-              icon={guides[3].icon}
-              href={guides[3].href}
-            />
+            <GuideCard index={3}/>
+            <GuideCard index={4}/>
           </div>
         </div>
         {/* Articles Section */}
@@ -150,15 +46,7 @@ export default function HomePage() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {articles.map((article, index) => (
-              <ArticleCard
-                key={index}
-                index={index}
-                title={article.title}
-                description={article.description}
-                href={article.href}
-              />
-            ))}
+            {articles.map((_, index) => <ArticleCard key={index} index={index}/>)}
           </div>
         </div>
       </div>
@@ -166,46 +54,31 @@ export default function HomePage() {
   );
 }
 
-interface HomeBoxProps {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-  badgeColor: string;
-  isLarge?: boolean;
-  index: number;
-  href: string;
-}
-
-function HomeBox({ icon, title, description, badgeColor, isLarge = false, index, href }: HomeBoxProps) {
+function GuideCard({index, large}: {index: number, large?: boolean}) {
+  const data = guides[index];
   return (
-    <Link href={href} className={`group relative bg-gradient-to-br from-zinc-50 to-zinc-100 dark:from-zinc-900/50 dark:to-zinc-800/50 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 rounded-2xl p-8 hover:shadow-2xl hover:shadow-zinc-200/20 dark:hover:shadow-zinc-900/20 transition-all duration-500 cursor-pointer overflow-hidden ${isLarge ? 'h-full flex flex-col justify-center' : ''}`}>
+    <Link href={data.href} className={`group relative bg-gradient-to-br from-zinc-50 to-zinc-100 dark:from-zinc-900/50 dark:to-zinc-800/50 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 rounded-2xl p-8 hover:shadow-2xl hover:shadow-zinc-200/20 dark:hover:shadow-zinc-900/20 transition-all duration-500 cursor-pointer overflow-hidden ${large ? 'h-full flex flex-col justify-center' : ''}`}>
       <GlassBackground />
       <FloatingAtom className="top-4 right-4" electronCount={index + 1}/>
       <div className="relative z-10">
-        <div className={`w-16 h-16 ${badgeColor} rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110 ${isLarge ? 'lg:mx-auto' : ''}`}>
-          {icon}
+        <div className={`w-16 h-16 ${data.homeColor} rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110 ${large ? 'lg:mx-auto' : ''}`}>
+          {data.icon}
         </div>
-        <h3 className={`text-xl font-bold mb-3 text-fd-foreground group-hover:text-zinc-900 dark:group-hover:text-white transition-colors duration-300 ${isLarge ? 'lg:text-center lg:text-2xl' : ''}`}>
-          {title}
+        <h3 className={`text-xl font-bold mb-3 text-fd-foreground group-hover:text-zinc-900 dark:group-hover:text-white transition-colors duration-300 ${large ? 'lg:text-center lg:text-2xl' : ''}`}>
+          {data.title}
         </h3>
-        <p className={`text-fd-muted-foreground group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors duration-300 leading-relaxed ${isLarge ? 'lg:text-center lg:text-lg' : ''}`}>
-          {description}
+        <p className={`text-fd-muted-foreground group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors duration-300 leading-relaxed ${large ? 'lg:text-center lg:text-lg' : ''}`}>
+          {data.description}
         </p>
       </div>
     </Link>
   );
 }
 
-interface ArticleCardProps {
-  title: string;
-  description: string;
-  href: string;
-  index: number;
-}
-
-function ArticleCard({ title, description, href, index }: ArticleCardProps) {
+function ArticleCard({index}: {index: number}) {
+  const data = articles[index];
   return (
-    <Link href={href} className="group relative block bg-gradient-to-br from-zinc-50 to-zinc-100 dark:from-zinc-900/50 dark:to-zinc-800/50 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 rounded-2xl p-8 hover:shadow-2xl hover:shadow-zinc-200/20 dark:hover:shadow-zinc-900/20 transition-all duration-500 cursor-pointer overflow-hidden hover:-translate-y-1 hover:scale-[1.02]">
+    <Link href={data.href} className="group relative block bg-gradient-to-br from-zinc-50 to-zinc-100 dark:from-zinc-900/50 dark:to-zinc-800/50 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 rounded-2xl p-8 hover:shadow-2xl hover:shadow-zinc-200/20 dark:hover:shadow-zinc-900/20 transition-all duration-500 cursor-pointer overflow-hidden hover:-translate-y-1 hover:scale-[1.02]">
       <GlassBackground />
       <FloatingAtom
         className="top-4 right-4"
@@ -222,10 +95,10 @@ function ArticleCard({ title, description, href, index }: ArticleCardProps) {
       />
       <div className="relative z-10">
         <h3 className="text-xl font-bold mb-3 text-fd-foreground group-hover:text-zinc-900 dark:group-hover:text-white transition-colors duration-300 line-clamp-2">
-          {title}
+          {data.title}
         </h3>
         <p className="text-fd-muted-foreground group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors duration-300 leading-relaxed line-clamp-3">
-          {description}
+          {data.description}
         </p>
         <div className="mt-4 flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors duration-300">
           Read more

@@ -18,9 +18,9 @@ export function FloatingAtom({
   electrons = [
     'bg-gradient-to-br from-gray-500 to-gray-600',
     'bg-gradient-to-br from-[#F24E1E] to-[#FF7262]',
-    'bg-gradient-to-br from-[#8049C7] to-[#A259FF]',
     'bg-gradient-to-br from-[#1ABCFE] to-[#1C87B3]',
     'bg-gradient-to-br from-[#0ACF83] to-[#099D64]',
+    'bg-gradient-to-br from-[#8049C7] to-[#A259FF]',
   ],
 }: FloatingAtomProps) {
   const incrementOrbitSize = 4; // w-10, w-14, ...

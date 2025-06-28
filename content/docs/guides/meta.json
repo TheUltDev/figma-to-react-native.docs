@@ -1,9 +1,10 @@
 {
+  "defaultOpen": true,
   "pages": [
     "installing",
     "designing",
-    "troubleshooting",
     "exporting",
-    "syncing"
+    "syncing",
+    "troubleshooting"
   ]
 }
