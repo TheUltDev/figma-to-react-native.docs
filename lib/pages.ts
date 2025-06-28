@@ -24,7 +24,7 @@ export function createGuides(): GuideMetadata[] {
   return filterPagesByPrefix('/plugin/guides/', ['title', 'description', 'homeColor', 'icon'])
     .map(page => {
       const iconElement = page.data.icon && page.data.icon in icons
-        ? createElement(icons[page.data.icon as keyof typeof icons], { size: 32 })
+        ? createElement(icons[page.data.icon as keyof typeof icons], { size: 32, color: 'white' })
         : null;
       return {
         title: page.data.title!,
