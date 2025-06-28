@@ -25,7 +25,7 @@ export const baseOptions: BaseLayoutProps = {
           height="27"
           fill="none">
           <rect width="27" height="27" rx="5" fill="#1E1E1E"></rect>
-          <circle cx="13.6" cy="13.6" r="2.1" fill="url(#paint0_radial_201_55)"></circle>
+          <circle cx="13.6" cy="13.6" r="2.1" fill="#1ABCFE"></circle>
           <path d="M13.5 18.4317C19.5751 18.4317 24.5 16.5513 24.5 14.2317C24.5 11.9121 19.5751 10.0317 13.5 10.0317C7.42487 10.0317 2.5 11.9121 2.5 14.2317C2.5 16.5513 7.42487 18.4317 13.5 18.4317Z" stroke="#8049C7"></path>
           <path d="M13.5 17.4317C19.5751 17.4317 24.5 15.5513 24.5 13.2317C24.5 10.9121 19.5751 9.03174 13.5 9.03174C7.42487 9.03174 2.5 10.9121 2.5 13.2317C2.5 15.5513 7.42487 17.4317 13.5 17.4317Z" stroke="#A259FF"></path>
           <path d="M10.8627 15.5263C13.9003 20.7875 17.9912 24.1124 20 22.9526C22.0089 21.7928 21.1749 16.5875 18.1373 11.3263C15.0998 6.06506 11.0089 2.7402 9.00002 3.9C6.99119 5.0598 7.82515 10.2651 10.8627 15.5263Z" stroke="#F24E1E"></path>
@@ -46,13 +46,6 @@ export const baseOptions: BaseLayoutProps = {
             <path d="M13.5 18.4317C19.5751 18.4317 24.5 16.5513 24.5 14.2317C24.5 11.9121 19.5751 10.0317 13.5 10.0317C7.42487 10.0317 2.5 11.9121 2.5 14.2317C2.5 16.5513 7.42487 18.4317 13.5 18.4317Z" stroke="#8049C7"></path>
             <path d="M13.5 17.4317C19.5751 17.4317 24.5 15.5513 24.5 13.2317C24.5 10.9121 19.5751 9.03174 13.5 9.03174C7.42487 9.03174 2.5 10.9121 2.5 13.2317C2.5 15.5513 7.42487 17.4317 13.5 17.4317Z" stroke="#A259FF"></path>
           </g>
-          <defs>
-            <radialGradient id="paint0_radial_201_55" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(13 13) rotate(59.0362) scale(2.91548)">
-              <stop stopColor="#1ABCFE"></stop>
-              <stop offset="0.796102" stopColor="#1ABCFE"></stop>
-              <stop offset="0.796202" stopColor="#1C87B3"></stop>
-            </radialGradient>
-          </defs>
         </svg>
         {'Figma -> React Native'}
       </>
