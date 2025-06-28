@@ -5,7 +5,7 @@ import { createElement } from 'react';
 
 /** @see https://fumadocs.dev/docs/headless/source-api */
 export const source = loader({
-  baseUrl: '/docs',
+  baseUrl: '/plugin',
   source: docs.toFumadocsSource(),
   icon(icon) {
     if (!icon) return;

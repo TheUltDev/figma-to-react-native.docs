@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { FloatingAtom } from "../components/FloatingAtom";
-import { GlassBackground } from "../components/GlassBackground";
+import { FloatingAtom } from "./_ui/FloatingAtom";
+import { GlassBackground } from "./_ui/GlassBackground";
 import { createGuides, createArticles } from "@/lib/pages";
 
 const guides = createGuides();

@@ -6,7 +6,7 @@ import { SiDiscord, SiGithub, SiX } from '@icons-pack/react-simple-icons';
  *
  * you can customise layouts individually from:
  * Home Layout: app/(home)/layout.tsx
- * Docs Layout: app/docs/layout.tsx
+ * Docs Layout: app/plugin/layout.tsx
  */
 export const baseOptions: BaseLayoutProps = {
   nav: {

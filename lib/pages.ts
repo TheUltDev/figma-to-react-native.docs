@@ -21,7 +21,7 @@ export interface ArticleMetadata {
  * @returns The guide pages metadata
  */
 export function createGuides(): GuideMetadata[] {
-  return filterPagesByPrefix('/docs/guides/', ['title', 'description', 'homeColor', 'icon'])
+  return filterPagesByPrefix('/plugin/guides/', ['title', 'description', 'homeColor', 'icon'])
     .map(page => {
       const iconElement = page.data.icon && page.data.icon in icons
         ? createElement(icons[page.data.icon as keyof typeof icons], { size: 32 })
@@ -43,7 +43,7 @@ export function createGuides(): GuideMetadata[] {
  * @returns The article pages metadata
  */
 export function createArticles(): ArticleMetadata[] {
-  return filterPagesByPrefix('/docs/features/', ['title', 'description']).map(page => ({
+  return filterPagesByPrefix('/plugin/features/', ['title', 'description']).map(page => ({
     title: page.data.title!,
     description: page.data.description!,
     href: page.url
