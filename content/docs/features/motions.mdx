@@ -1,0 +1,141 @@
+---
+title: Motions
+description: Add motion to any node in your Figma design using the Node Toolbar.
+---
+
+<VideoPlayer feature="animations" />
+
+## Overview
+
+The plugin provides a powerful motion designer that allows you to create declarative motions directly in your Figma designs. React Native code is generated using [Motion](https://exo-kit.com/layout/motion) from [Exo Kit](https://exo-kit.com).
+
+<Callout type="info">
+[Motion](https://exo-kit.com/layout/motion) uses React Native's [Animated](https://reactnative.dev/docs/animated) API.
+The native driver is used when available, otherwise the JavaScript driver is used.
+This is for compatibility with existing React Native projects and lightweight bundle size on web.
+In the future, [Reanimated](https://docs.swmansion.com/react-native-reanimated/) will be optionally supported.
+Let us know if you'd like to see this feature prioritized.
+</Callout>
+
+## Motion Types
+
+The plugin supports five different motion triggers:
+
+- **Initial** - The initial state of properties that have motion.
+- **Hover** - Runs when hovering over the element (web only).
+- **Press** - Runs when the node is pressed/touched.
+- **Enter** - Runs when the node enters the viewport.
+- **Exit** - Runs when the node leaves the viewport.
+
+## Adding Motions
+
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+
+<Steps>
+<Step>
+
+### Select a Node
+
+Select any node in your Figma design that you want to animate.
+
+![Select Node](https://placehold.co/510x800?text=Select+Node+in+Figma)
+
+</Step>
+
+<Step>
+
+### Open Node Toolbar
+
+With the node selected, the plugin will display a floating toolbar with various options. Click the **Motion** icon (looks like a motion symbol) to access motion settings.
+
+![Node Toolbar](https://placehold.co/510x800?text=Node+Toolbar+with+Animation+Icon)
+
+</Step>
+
+<Step>
+
+### Configure Motion Properties
+
+In the motion panel, you can configure various properties:
+
+![Animation Properties Panel](https://placehold.co/510x800?text=Animation+Properties+Panel)
+
+#### Transform Properties
+
+- **Opacity**: Control the transparency (0-1)
+- **Scale**: Resize the element (0-10x)
+- **Rotate**: 2D or 3D rotation
+  - **2D Mode**: Simple rotation around Z-axis (0-360°)
+  - **3D Mode**: Rotation around X, Y, and Z axes
+- **Skew**: Distort the element along X and Y axes
+- **Offset**: Move the element along X and Y coordinates
+
+#### Timing Properties
+
+- **Delay**: Set a delay before the animation starts (in seconds)
+
+</Step>
+
+<Step>
+
+### Set Transition Type
+
+Click the **Transition** button to configure how the motion moves:
+
+![Transition Settings](https://placehold.co/510x800?text=Transition+Settings+Panel)
+
+#### Tween Transitions
+- **Linear**: Constant speed throughout
+- **Ease In**: Starts slow, speeds up
+- **Ease Out**: Starts fast, slows down
+- **Ease In Out**: Slow start and end, fast middle
+- **Back In/Out/InOut**: Overshooting animations
+- **Circle In/Out/InOut**: Circular easing curves
+- **Custom Bezier Curve**: Edit any preset or create your own
+
+#### Spring Transitions
+- **Time-based**: Control duration and bounce amount
+- **Physics-based**: Control stiffness, damping, and mass
+  - Stiffness = How "tight" the spring is (higher = faster)
+  - Damping = How much resistance the spring has (higher = less bouncy)
+  - Mass = The weight of the animated object (higher = slower)
+
+</Step>
+</Steps>
+
+## Generated Code
+
+When you add motions to your nodes, the plugin converts your nodes and adds a declarative config.
+
+```tsx
+import {Motion} from 'react-exo/motion';
+
+export function MyComponent() {
+  return (
+    <Motion.View
+      initial={{
+        opacity: 0,
+        scale: 0.8,
+      }}
+      enter={{
+        opacity: 1,
+        scale: 1,
+      }}
+      transition={{
+        type: 'spring',
+        damping: 30,
+        stiffness: 400,
+      }}>
+      {/* Your content */}
+    </Motion.View>
+  );
+}
+```
+
+<Callout type="info">
+The plugin automatically converts your Figma nodes to the appropriate Motion component:
+- Frames → `Motion.View`
+- Texts → `Motion.Text`
+- Images → `Motion.Image`
+- Vectors → `Motion.Svg`
+</Callout>
