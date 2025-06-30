@@ -1,8 +1,224 @@
 ---
 title: Icon System
-description: Working with the icon system.
+description: Import, organize, and use icons from popular icon libraries in your Figma-to-React Native workflow.
 ---
 
 <VideoPlayer feature="icons"/>
 
-<Callout type="warn">Documentation coming soon. Thank you for your patience.</Callout>
+## Overview
+
+The plugin provides a comprehensive icon system that allows you to import icons from popular libraries like [Iconify](https://iconify.design/) directly into your Figma designs. These icons are automatically converted to React Native components with full theme support and customizable properties.
+
+<Callout type="info">
+Icons are imported using the [Iconify](https://iconify.design/) format, which provides access to over 100,000 icons from popular icon sets like Material Design, Feather, Heroicons, and more.
+</Callout>
+
+## Icon Organization
+
+Icons in the plugin are organized by:
+
+- **Size**: Icons are available in three standard sizes - 16px, 24px, and 32px
+- **Sets**: Icons are grouped into sets with prefixes (e.g., `mdi:` for Material Design Icons)
+- **Theme Integration**: All icons support your design system's theme colors and variables
+
+## Importing Icons
+
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+
+<Steps>
+<Step>
+
+### Select Icon Source
+
+Choose from popular icon libraries or import custom icon sets in Iconify format.
+
+![Icon Library Selection](https://placehold.co/600x400?text=Select+Icon+Library)
+
+</Step>
+
+<Step>
+
+### Import Icon Set
+
+The plugin will automatically create a dedicated "Icons" page in your Figma file and organize icons into sets.
+
+![Icon Import Process](https://placehold.co/600x400?text=Icon+Import+Process)
+
+Each icon set is organized in a frame with the following format:
+- **Name**: `{Set Name}, {Mode}, {Size}`
+- **Layout**: Grid layout for uniform sizes, list layout for varying sizes
+- **Theme**: Automatically applies your design system's background and foreground colors
+
+</Step>
+
+<Step>
+
+### Icon Set Organization
+
+Icons are automatically organized into component sets with consistent naming:
+
+![Icon Set Organization](https://placehold.co/600x400?text=Icon+Set+Organization)
+
+- **Prefix**: Each icon set has a unique prefix (e.g., `heroicons-outline:`)
+- **Components**: Each icon becomes a Figma component
+- **Variants**: Icons maintain their original proportions and styling
+
+</Step>
+</Steps>
+
+## Using Icons in Your Design
+
+<Steps>
+<Step>
+
+### Access Icon Components
+
+Once imported, icons appear in your Figma assets panel and can be used like any other component.
+
+![Icon Components Panel](https://placehold.co/600x400?text=Icon+Components+in+Assets)
+
+</Step>
+
+<Step>
+
+### Drag and Drop
+
+Simply drag icons from the assets panel into your designs. The plugin automatically detects icon usage during export.
+
+![Using Icons in Design](https://placehold.co/600x400?text=Drag+Icons+to+Design)
+
+</Step>
+
+<Step>
+
+### Theme Integration
+
+Icons automatically inherit your design system's color tokens and can be customized using:
+
+- **Color Styles**: For pre-variable color systems
+- **Variable Colors**: For modern variable-based design systems
+- **Fill/Stroke**: Support for both filled and outlined icon styles
+
+![Icon Theming](https://placehold.co/600x400?text=Icon+Theme+Integration)
+
+</Step>
+</Steps>
+
+## Generated Code
+
+When you use icons in your designs, the plugin generates clean React Native code with full TypeScript support.
+
+### Basic Icon Usage
+
+```tsx
+import { IconCheck } from 'components/icons/heroicons/Check';
+
+export function SuccessMessage() {
+  return (
+    <View style={styles.container}>
+      <IconCheck
+        size={24}
+        color="success"
+      />
+      <Text>Operation completed successfully!</Text>
+    </View>
+  );
+}
+```
+
+### Icon with Custom Props
+
+```tsx
+import { IconSettings } from 'components/icons/feather/Settings';
+
+export function SettingsButton() {
+  return (
+    <Pressable onPress={handleSettings}>
+      <IconSettings
+        size={20}
+        color="secondary"
+      />
+    </Pressable>
+  );
+}
+```
+
+### Icon Component Structure
+
+Each generated icon component includes:
+
+```tsx
+import { Icon, type IconProps } from '../Icon';
+
+export function IconCheck(props: IconProps) {
+  return (
+    <Icon
+      {...props}
+      size={24}
+      path="M18 12a6 6 0 1 1-12 0 6 6 0 0 1 12 0m1 0a7 7 0 1 1-14 0 7 7 0 0 1 14 0m-3.568-2.748a.5.5 0 0 0-.864-.504l-3.14 5.384-2.044-2.452a.5.5 0 0 0-.768.64l2.5 3a.5.5 0 0 0 .816-.068z"
+    />
+  );
+}
+```
+
+## Icon Properties
+
+### IconProps Interface
+
+```tsx
+export interface IconProps {
+  color?: IconColor | 'currentColor' | `#${string}`;
+  size?: number;
+  path?: string;
+}
+```
+
+### Available Colors
+
+The icon system supports a comprehensive color palette that integrates with your design system:
+
+- **Brand Colors**: `brand`, `brand-pressed`, `brand-secondary`, `brand-tertiary`
+- **Component Colors**: `component`, `component-pressed`, `component-secondary`, `component-tertiary`
+- **Semantic Colors**: `success`, `danger`, `warning`
+- **Interactive States**: `hover`, `pressed`, `selected`, `disabled`
+- **Theme Colors**: `default`, `secondary`, `tertiary`, `inverse`
+- **Custom Colors**: Hex values (`#ff0000`) or `currentColor`
+
+### Size Options
+
+Icons support flexible sizing:
+- **Standard Sizes**: 16px, 24px, 32px (default sizes)
+- **Custom Sizes**: Any numeric value for pixel dimensions
+- **Responsive**: Automatically scales with your design system
+
+## Advanced Features
+
+### Icon Detection
+
+The plugin automatically detects when nodes are icons based on:
+- Component location in the special "Icons" page
+- Naming convention with prefixes (e.g., `heroicons-outline:check`)
+- Component structure and properties
+
+### Theme Integration
+
+Icons seamlessly integrate with your design system:
+
+```tsx
+// Automatic theme color application
+<IconWarning color="warning" />
+
+// Custom color override
+<IconCustom color="#ff6b6b" />
+
+// Inherit parent text color
+<IconInfo color="currentColor" />
+```
+
+### Icon Set Management
+
+The plugin provides utilities for:
+- **Updating Sets**: Add new icons to existing sets
+- **Version Control**: Track icon set versions and changes
+- **Batch Operations**: Import multiple icon sets simultaneously
+- **Cleanup**: Remove unused icons and optimize bundle size
