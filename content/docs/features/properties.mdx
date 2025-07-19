@@ -1,6 +1,329 @@
 ---
 title: Properties
-description: Configuring and using properties in components.
+description: Define and configure component properties to create dynamic, reusable React Native components.
 ---
 
-<Callout type="warn">Documentation coming soon. Thank you for your patience.</Callout>
+<VideoPlayer feature="properties" />
+
+## Overview
+
+The plugin allows you to define custom properties for your Figma components that become props in the generated React Native code. This enables you to create dynamic, reusable components with configurable content, styles, and behavior.
+
+Properties are configured through the Node Toolbar and automatically generate TypeScript interfaces with proper type safety. The system supports both native Figma properties and custom node attributes for advanced component customization.
+
+<Callout type="info">
+Properties bridge the gap between static Figma designs and dynamic React Native components. They allow you to create flexible component APIs that can be customized at runtime.
+</Callout>
+
+## Property Types
+
+The plugin supports two categories of properties:
+
+### Figma Native Properties
+
+These are standard Figma component properties that map directly to React Native props:
+
+- **Boolean** - Toggle states and conditional rendering (`true`/`false`)
+- **Text** - Dynamic text content with string interpolation support
+- **Variant** - Component variant selection from predefined options
+- **Instance Swap** - Dynamic component swapping (renders as JSX elements)
+
+### Node Attributes
+
+Custom attributes that provide advanced configuration options:
+
+- **String** - Text values with custom validation
+- **Number** - Numeric values with range controls
+- **Boolean** - Toggle states with custom behavior
+- **Enum** - Dropdown selection from predefined options
+- **Tuple** - Arrays of values (useful for colors, coordinates)
+- **Function** - JavaScript functions for event handlers
+- **Motion** - Animation and transition properties
+
+## Adding Properties
+
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+
+<Steps>
+<Step>
+
+### Select a Component
+
+Select a component in your Figma design that you want to add properties to. The component must be a main component (not an instance) to configure properties.
+
+![Select Component](https://placehold.co/510x800?text=Select+Component+for+Properties)
+
+</Step>
+
+<Step>
+
+### Open Properties Panel
+
+With the component selected, click the **Properties** icon (adjust/gear icon) in the Node Toolbar to access property configuration.
+
+![Properties Toolbar](https://placehold.co/510x800?text=Properties+Toolbar+Icon)
+
+The Properties panel will open as a popover above the toolbar, showing all available properties for the selected component.
+
+</Step>
+
+<Step>
+
+### Configure Property Types
+
+In the properties panel, you can add and configure different property types:
+
+![Properties Configuration](https://placehold.co/510x800?text=Properties+Configuration+Panel)
+
+#### Adding New Properties
+
+1. Click the **+** button in the Properties panel header
+2. Select a property name from the dropdown (or create a new one)
+3. Choose the appropriate property type
+4. Configure the property settings
+
+#### Property Configuration Options
+
+**Boolean Properties:**
+- Toggle between true/false states
+- Set default value
+- Configure conditional rendering logic
+
+**Text Properties:**
+- Set default text content
+- Support for string interpolation with `${}` syntax
+- Automatic quote escaping for special characters
+
+**Variant Properties:**
+- Select from existing component variants
+- Automatic identifier sanitization
+- Type-safe variant selection
+
+**Instance Swap Properties:**
+- Swap between different component instances
+- Renders as JSX elements in generated code
+- Supports nested component properties
+
+</Step>
+
+<Step>
+
+### Configure Node Attributes
+
+For advanced customization, you can add custom node attributes:
+
+![Node Attributes Configuration](https://placehold.co/510x800?text=Node+Attributes+Configuration)
+
+#### Attribute Types
+
+**String Attributes:**
+- Custom text input with validation
+- Placeholder text support
+- Character limits and format rules
+
+**Number Attributes:**
+- Numeric input with range controls
+- Precision and step configuration
+- Min/max value constraints
+
+**Enum Attributes:**
+- Dropdown selection from predefined options
+- Custom option values
+- Type-safe enum generation
+
+**Tuple Attributes:**
+- Array of values (e.g., RGB colors, coordinates)
+- Individual field labels
+- Range validation for each element
+
+</Step>
+
+<Step>
+
+### Property Documentation
+
+Add documentation for your properties using TSDoc comments in the component description:
+
+```text
+Button component with customizable appearance and behavior.
+
+[Properties]
+title Button text content
+variant Button style variant (primary, secondary, outline)
+disabled Disable button interactions
+onPress Button press handler function
+```
+
+This automatically generates TypeScript documentation for your properties.
+
+</Step>
+</Steps>
+
+## Generated Code
+
+The plugin automatically generates TypeScript interfaces and components based on your property configuration:
+
+### Interface Generation
+
+```tsx
+export interface ButtonProps extends PressableProps {
+  /** Button text content */
+  title: string;
+  /** Button style variant */
+  variant: typeof ButtonVariants.variant[number];
+  /** Disable button interactions */
+  disabled?: boolean;
+  /** Button press handler function */
+  onPress?: () => void;
+}
+```
+
+### Component Implementation
+
+```tsx
+import React from 'react';
+import { Pressable, Text, StyleSheet } from 'react-native';
+
+export function Button({
+  title,
+  variant = 'primary',
+  disabled = false,
+  onPress,
+  ...props
+}: ButtonProps) {
+  return (
+    <Pressable
+      onPress={onPress}
+      disabled={disabled}
+      style={[
+        styles.button,
+        styles[variant],
+        disabled && styles.disabled,
+      ]}
+      {...props}>
+      <Text style={styles.title}>{title}</Text>
+    </Pressable>
+  );
+}
+
+const styles = StyleSheet.create({
+  button: {
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  primary: {
+    backgroundColor: '#007AFF',
+  },
+  secondary: {
+    backgroundColor: '#F2F2F7',
+  },
+  disabled: {
+    opacity: 0.5,
+  },
+  title: {
+    fontSize: 16,
+    fontWeight: '600',
+  },
+});
+```
+
+### Property Usage
+
+```tsx
+// Boolean property
+<Button disabled={true} />
+<Button disabled />
+
+// Text property with interpolation
+<Button title={`Hello ${username}`} />
+
+// Variant property
+<Button variant="primary" />
+
+// Instance swap property
+<Button
+  icon={<Icon name="arrow-right" />}
+  title="Continue"
+/>
+```
+
+## Advanced Features
+
+### Property Validation
+
+The system provides built-in validation for different property types:
+
+- **Text Properties**: Automatic quote escaping and template literal support
+- **Boolean Properties**: Optimized rendering (omits `={true}` for brevity)
+- **Variant Properties**: Identifier sanitization for invalid characters
+- **Number Properties**: Range validation and precision controls
+
+### Conditional Properties
+
+Boolean and Instance Swap properties support conditional rendering:
+
+```tsx
+// Boolean property controls visibility
+{showIcon && <Icon name="star" />}
+
+// Instance swap allows dynamic component selection
+{variant === 'primary' ? <PrimaryButton /> : <SecondaryButton />}
+```
+
+### Property Inheritance
+
+Properties can be inherited from parent components and extended:
+
+```tsx
+interface ButtonProps extends PressableProps {
+  // Custom properties
+  variant: 'primary' | 'secondary';
+  // Inherited from PressableProps
+  onPress?: () => void;
+  disabled?: boolean;
+}
+```
+
+<Callout type="info">
+The plugin automatically generates TypeScript interfaces for your properties and ensures type safety throughout your component code. Properties are validated at build time and provide excellent developer experience with autocomplete and type checking.
+</Callout>
+
+## Best Practices
+
+### Property Naming
+
+- Use camelCase for property names
+- Choose descriptive names that indicate purpose
+- Avoid reserved JavaScript keywords
+- Keep names concise but clear
+
+### Property Organization
+
+- Group related properties together
+- Use consistent naming patterns
+- Document complex properties with descriptions
+- Provide sensible default values
+
+### Performance Considerations
+
+- Use Boolean properties for conditional rendering
+- Prefer Variant properties over multiple Boolean flags
+- Consider Instance Swap for dynamic component selection
+- Use Tuple properties for related values (colors, coordinates)
+
+### Documentation
+
+Always document your properties using the `[Properties]` section in component descriptions:
+
+```text
+Component description goes here.
+
+[Properties]
+propertyName Property description with usage details
+anotherProperty Another property description
+```
+
+This ensures your generated components have proper TypeScript documentation and improves the developer experience for your team.

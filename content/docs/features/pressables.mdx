@@ -1,6 +1,120 @@
 ---
 title: Pressables
-description: Creating pressable components.
+description: Make any node interactive with touch handling and press states using the Node Toolbar.
 ---
 
-<Callout type="warn">Documentation coming soon. Thank you for your patience.</Callout>
+<VideoPlayer feature="pressables" />
+
+## Overview
+
+The plugin allows you to make any node in your Figma design interactive by converting it into a pressable component. This generates React Native code using the [Pressable](https://reactnative.dev/docs/pressable) component with proper touch handling, press states, and accessibility features. Documentation coming soon. Thank you for your patience.
+
+<Callout type="info">
+Pressable components in React Native provide better touch handling than TouchableOpacity and include built-in accessibility features. They also support advanced interaction states like hover (on web) and focus.
+</Callout>
+
+## Pressable Types
+
+The plugin supports various pressable interactions:
+
+- **Tap** - Basic press/tap handling
+- **Long Press** - Extended press detection
+- **Hover** - Mouse hover states (web only)
+- **Focus** - Keyboard focus handling
+- **Disabled** - Non-interactive state
+
+## Making Nodes Pressable
+
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+
+<Steps>
+<Step>
+
+### Select a Node
+
+Select any node in your Figma design that you want to make interactive.
+
+![Select Node](https://placehold.co/510x800?text=Select+Node+for+Pressable)
+
+Documentation coming soon. Thank you for your patience.
+
+</Step>
+
+<Step>
+
+### Open Node Toolbar
+
+With the node selected, click the **Pressable** icon in the floating toolbar to access pressable settings.
+
+![Pressable Toolbar](https://placehold.co/510x800?text=Pressable+Toolbar+Icon)
+
+Documentation coming soon. Thank you for your patience.
+
+</Step>
+
+<Step>
+
+### Configure Pressable Properties
+
+In the pressable panel, you can configure various interaction properties:
+
+![Pressable Properties](https://placehold.co/510x800?text=Pressable+Properties+Panel)
+
+#### Interaction Properties
+
+- **onPress**: Handle tap/click events
+- **onLongPress**: Handle long press events
+- **onPressIn**: Handle press start events
+- **onPressOut**: Handle press end events
+- **onHoverIn/Out**: Handle hover events (web only)
+
+#### State Properties
+
+- **Disabled**: Make the element non-interactive
+- **Hit Slop**: Extend the touchable area
+- **Press Retention**: Control press behavior when moving
+
+Documentation coming soon. Thank you for your patience.
+
+</Step>
+
+<Step>
+
+### Configure Visual States
+
+Set up different visual states for press interactions:
+
+![Pressable States](https://placehold.co/510x800?text=Pressable+Visual+States)
+
+Documentation coming soon. Thank you for your patience.
+
+</Step>
+</Steps>
+
+## Generated Code
+
+Documentation coming soon. Thank you for your patience.
+
+```tsx
+import { Pressable } from 'react-native';
+
+export function MyPressableComponent() {
+  return (
+    <Pressable
+      onPress={() => console.log('Pressed!')}
+      onLongPress={() => console.log('Long pressed!')}
+      disabled={false}
+      hitSlop={8}
+      style={({ pressed }) => [
+        styles.container,
+        pressed && styles.pressed,
+      ]}>
+      {/* Your content */}
+    </Pressable>
+  );
+}
+```
+
+<Callout type="info">
+The plugin automatically detects pressable nodes and generates appropriate React Native Pressable components with TypeScript support and proper event handling.
+</Callout>
