@@ -1,15 +1,17 @@
 ⚛ Documentation Notes for Figma to React Native ⚛
-    > (will be user help tips)
+    > User help tips
     > Motion doc page is a great example of how he wants it done. 
 
 # Designing 
-- Step by step 'Hello World'
-    - Create a frame (f) and draw it
-    - Right click and create component (Control Alt K)
-    - *** USE Auto layout (Shift A), All frames NEED auto layout or it will look bad ***
-    > You can also click 'Add component' button and 'Create new', Name it, click create 
-    - Hit 'T' (or T on keyboard) and hit inside component to start typing 'Hello World' 
-    - Go to the right side panel. Expand on: Simple explanation of the tools in auto layout and appearance. 
+- Overview:
+  - Step-by-step guide for creating React Native components in Figma, covering everything from basic components with auto-layout and themes to advanced features like component properties, variants, and proper organization with naming conventions that map to the final code structure.
+  - ✿ *** USE Auto layout (Shift A), All frames NEED auto layout or it will look bad ***
+- Step by step for creating a 'Hello World' component: 
+    1. Create a Frame (F) 
+    2. Right click and create component (Control+Alt+K)  *we need to add window hotkeys too* 
+            > ✿ You can also click 'Add component' button and 'Create new', Name it, click create 
+    3. Hit 'T' (or T on keyboard) and hit inside component to start typing 'Hello World' 
+    4. Go to the right side panel. Expand on: Simple explanation of the tools in auto layout and appearance. 
 - Themes
     - Creating theme
     - Can choose preset or custom color 
