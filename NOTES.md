@@ -13,58 +13,67 @@
     3. Hit 'T' (or T on keyboard) and hit inside component to start typing 'Hello World' 
     4. Go to the right side panel. Expand on: Simple explanation of the tools in auto layout and appearance. 
 - Themes
-    - Creating theme
-    - Can choose preset or custom color 
-    - Once done, hit generate theme
+    - Creating a Theme: 
+      1. Choose a preset or custom color 
+      2. Select Generate Theme
     - Then create your variables
-- Go back to 'Hello World' component once theme is created
-    - Fill of component, (under library tab) white by default, but can type 'Background' and choose what color you'd like
-    - Text, (under library tab still) can choose by typing 'Foreground' 
-    - Now you can use light and dark (can change at the top under page) because themes are set up now 
-    - Then show them how to add a border, select component, go to 'Stroke' and select the color thing, type 'Border' under library to add a colored border. 
-- How to add an Icon
-    - After you create your theme, you can browse icon sets, under the icon tab
-    - Browse icon set button, select your set(s) and then click 'Import' 
-    - Now you can search at the top what icon you want and drag/drop into your component 
-    > You can change the width, by default the instance of that icon component had the 'Foreground theme color' just like text did. So when switching themes, you can have light/dark 
-    >  Read here to dive more into the icon system! 
+- Once Theme has been created, return to 'Hello World' component to customize the following under the 'Library Tab': 
+    - Fill of component, will be white by default, but by typing 'Background' you can select the color of your preference.
+    - Text, can be selected by typing 'Foreground' 
+    - You are now able to use light and dark modes because themes have been successfully set up. (These can be changed at the top, under Page)
+- How to add a Border:
+    1. Select component 
+    2. Go to 'Stroke' and select a color 
+    3. Type 'Border' under Library Tab to add a colored border 
+- How to add an Icon: 
+    - After you create your theme, you can browse icon sets under the Icon Tab
+      1. Browse icon set button, 
+      2. Select your set(s) 
+      3. Click 'Import' 
+    - Now you are able search at the top what icon you want and drag/drop it into your component. 
+    > You are able to change the width of the icon. 
+    > By default the instance of that icon component has the 'Foreground theme color' just like Text did. So when switching themes, you are able to have light/dark themes. 
+    > Read here to dive more into the icon system! 
+
 - Back to the 'Hello World' 
-    - The plug in maps Figma component properties to React Native component properties. 
-    - Example: Select component, select properties at the right-hand top on panel, the '+', choose 'Text'. Name it. Set value = hello world. Create. 
-        - It is not used yet, so select text inside component, right beside text at the right top on the side. Click symbol, choose 'Greetings property' that you just created. 
-    - Now instead of the text content being hard coded, it is passed at a property. This can be used for storybook/ doc pages/ preview.  
+  - The plug in maps Figma component properties to React Native component properties. 
+    - Example: 
+       - 1. Select component -> 2. select properties at the right-hand top on panel -> 3. click the '+' -> 4. choose 'Text' -> 5. Name it -> 6. Set value = hello world -> 7. Create 
+       - It is not used yet so: 1. Select text inside component, right beside text at the right top on the side -> 2. Click symbol and choose 'Greetings property' that you just
+        created. 
+    - Now instead of the text content being hard coded, it is passed as a property. This can be used for your Storybook, Doc Pages, and Preview. 
+
     - Creating a 'Boolean' property
-        - It is located at the top right, hit the '+' and select boolean
-        - Name boolean and value is just the default that will be displayed in storybook/preview etc. 
-        - Right now the properties aren't used (Can tell by the! )
-        - To use it, click on the icon layer, in the 'Appearance' panel, click the 3rd icon in that row. 
-            - Click show icon properties 
-        - You will notice the icon in the code is wrapped in a Conditional Render' (maybe have a code example)
-        - Now if you go back to the component props on the right, and change the show icon default value to 'False', the icon will no longer show in the preview. BUT notice the code does NOT change. 
-    - Creating a 'Home Screen' component 
-        - Create a component
-        - Go back to component list in the plugin. Drag the 'Hello World' component into the 'Home Screen' component. 
-        - Now we are using an instance of hello world, ill notice it import the 'Hello World' component in the code. And passes props to it. 
-        - You can then select the component instance, in the home screen component. And configure its properties (on the up right side panel) independently for this certain instance. 
-        - You will see the code update once configured. 
-    - You can nest as many instances as you like inside a component (i.e. Button inside a dialogue, inside a screen)
+        - 1. Located at the top right -> 2. Hit the '+' -> 3. Select 'Boolean'
+        - Boolean name and value are just the defaults that will be displayed in Storybook, Doc Pages, Preview etc. 
+        - Right now the properties are not used (You can tell by the !)
+        - To use it: 1. Click on the Icon Layer in the 'Appearance' panel -> 2. Click the 3rd icon in that row -> 3. Click show icon properties 
+        - You will notice the icon in the code is wrapped in a 'Conditional Render' (have a code example)
+          - If you go back to the component props on the right and change the show icon default value to 'False', the icon will no longer show in the preview. BUT notice the code does NOT change. 
 
-- 'Variant' Property (Hello World)
-    - Select the HS component, go to props at the top and hit '+', choose 'Variant'
-    - Rename 'Property 1' to 'Radius', name value to 'Square' 
-    - Then click the add variant button (at the bottom of the component on the middle screen), after creating 2nd variant, rename it's value to 'Rounded' 
-    - Then set border radius for 2nd one. 
-    - Then go to the Home Screen (HS) component, go to the hello world instead HS comp. We can now choose (right side) between rounded and square 
+    - Creating a 'Home Screen' component:  
+      - 1. Create a component -> 2. Go back to component list in the plugin -> 3.Drag the 'Hello World' component into the 'Home Screen' component 
+      - Now we are using an instance of hello world, notice it imported the 'Hello World' component in the code and passed props to it. 
+      - You can then select the component instance in the home screen component and configure its properties independently for this certain instance. (Located on the upper right side 
+        panel)
+      - You will see the code update once configured. 
+      - You can nest as many instances as you like inside a component (i.e. Button inside a dialogue, inside a screen)
 
-- Still in 'Hello World'...'Instance Swap' Property
-    - Select the home screen component, go to properties, and select instance swap (last one)
-    - Name, value = (Pick your hello world component), click create property button
-    - Select (on the left) the previous hello world we used, go to the top right panel, select the 2nd icon 'Apply instance swap property' you will see the button we just made and select it. 
-    - Notice the hello world component is no longer imported, it is now passed as a property. 
+- Creating a 'Variant' Property: (Hello World)
+    - 1. Select the Home Screen component -> 2. Go to props at the top -> 3. click the '+' -> 4. Choose 'Variant'-> 
+      5. Rename 'Property 1' to 'Radius' and rename 'Value' to 'Square' -> 6. Click the 'add variant button' (at the bottom of the component on the middle screen) -> 
+      7. After creating the 2nd variant, rename it's value to 'Rounded' -> 8. Set border radius for the 2nd variant -> 9. Go to the Home Screen component and go to the hello world 
+         inside of it -> 10. We can now choose between rounded and square (located on the right side)
 
-    - Now if we go to the component list, we drag/drop the home screen to make an instance of it. (Unsure if should add this, kind of complex)
+- Creating an 'Instance Swap' Property: (Hello World)
+  - 1. Select the home screen component -> 2. Go to properties -> 3. Select instance swap (last one) -> 4. Set Name and Value = (Pick your hello world component) -> 5. Click create 
+       property button -> 6. On the left side, select the previous hello world we used -> 7. Go to the top right panel and select the 2nd icon 'Apply instance swap property' -> 8. You will see the button we just created, select it. 
+  - Notice the hello world component is no longer imported, it is now passed as a property. 
+  - Now if we go to the component list, we can drag/drop the home screen to make an instance of it. (Unsure if should add this, kind of complex)
         - You can change what component is included in that slot (in the property button slot)
 
+ /// stopped reviewing notes here /// 
+ 
 - Naming and Organization 
     - The following of these are mapped:
         - Page names -> base folder names (snake case)
@@ -187,20 +196,20 @@
       - It is recommended to use Variable fonts for the best font weight accuracy. 
       - Font Strokes are not supported. 
 
-    ## Varient Issues   
-      - Make sure there are no comflicting variants in a component set that share the exact name. Varient values must be unique combinations. 
+    ## Variant Issues  
+      - Make sure there are no conflicting variants in a component set that share the exact name. Variant values must be unique combinations. 
       - Only change styles between variants, do not remove layers. All variants MUST have the same layers and structure. 
       - Do not overload component sets, prefer creating another component (you should NOT have 50 fucking variants) 
-      - Do not make dark and light mode variants, use the fucking theme system god cavitt blessed us with. 
+      - Do not make dark and light mode variants, use the fucking theme system god Cavitt blessed us with. 
       - The max of 2 variant properties are supported on a component. 
-      - The 'state' variant property is special and is used for handling press events, it should always be the last varient property. 
-        - Valide values for the state variant prop are:'Default', 'Hovered', 'Pressed', 'Focused', and 'Disabled'. 
+      - The 'state' variant property is special and is used for handling press events, it should always be the last variant property. 
+        - Valid values for the state variant prop are:'Default', 'Hovered', 'Pressed', 'Focused', and 'Disabled'. 
     
     ## Other Style Issues 
       - If you encounter an issue with the component preview in the plugin not matching the Figma design, please provide a minimal reproducible Figma file and contact us on Discord. So we can fix the issue in a timely manner 😸
 
     ## Sync and MCP Issues 
-      - If you encounter a problem with the desktop sync tool, MCP server, subscriptions, or website dashboard, please contact us on Discord for proirity support 😸
+      - If you encounter a problem with the desktop sync tool, MCP server, subscriptions, or website dashboard, please contact us on Discord for priority support 😸
 
 # Bug Notes
   1. Title Case Needed:
